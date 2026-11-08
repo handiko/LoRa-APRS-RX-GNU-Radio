@@ -6,7 +6,7 @@
 
 **Companion documents:**
 
-- `lora_aprs_rx_plain_english.md`: the same receiver and the drift investigation, written as a narrative without maths.
+- `README.md`: the same receiver and the drift investigation, written as a narrative without maths.
 - `lora_rx_explained.md`: the technical description of my original LoRa receiver (`lora_trx_sim.grc`), from which this one is derived. It derives the de-chirp and synchronisation steps in more detail than I repeat here.
 
 **Figures:** I reuse the `lora_aprs_pe_*.svg` diagrams from the plain-English document; they need to sit in the same folder. The data plots are computed from a Gqrx recording of my tracker, YB1SDL-9.
