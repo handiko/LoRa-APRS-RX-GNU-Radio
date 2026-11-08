@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="Measured frequency drift during one real frame, seen by a receiver that does not track">
+<title>Measured frequency drift during one real frame, seen by a receiver that does not track</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">What the recording showed: the tracker's frequency creeps up during the payload</text>
+<rect x="90.0" y="60.0" width="820.0" height="330.0" rx="0" fill="#ffffff" stroke="#cfcfca" stroke-width="1"/>
+<rect x="90.0" y="99.8" width="820.0" height="227.6" fill="#E3F4E8" fill-opacity="0.9"/>
+<rect x="90.0" y="327.4" width="820.0" height="62.6" fill="#FBE4E4" fill-opacity="0.95"/>
+<rect x="90.0" y="60.0" width="820.0" height="39.8" fill="#FBE4E4" fill-opacity="0.95"/>
+<rect x="90.0" y="60.0" width="74.1" height="330.0" fill="#F8E6E4" fill-opacity="0.7"/>
+<path d="M90.0 355.9 L910.0 355.9" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="355.9" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">-1</text>
+<text x="916.0" y="355.9" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">-31 Hz</text>
+<path d="M90.0 299.0 L910.0 299.0" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="299.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">0</text>
+<text x="916.0" y="299.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+0 Hz</text>
+<path d="M90.0 242.1 L910.0 242.1" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="242.1" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">1</text>
+<text x="916.0" y="242.1" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+31 Hz</text>
+<path d="M90.0 185.2 L910.0 185.2" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="185.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">2</text>
+<text x="916.0" y="185.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+61 Hz</text>
+<path d="M90.0 128.3 L910.0 128.3" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="128.3" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">3</text>
+<text x="916.0" y="128.3" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+92 Hz</text>
+<path d="M90.0 71.4 L910.0 71.4" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="71.4" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">4</text>
+<text x="916.0" y="71.4" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+122 Hz</text>
+<path d="M98.7 390.0 L98.7 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="98.7" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">0</text>
+<path d="M229.6 390.0 L229.6 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="229.6" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">15</text>
+<path d="M360.4 390.0 L360.4 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="360.4" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">30</text>
+<path d="M491.3 390.0 L491.3 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="491.3" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">45</text>
+<path d="M622.1 390.0 L622.1 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="622.1" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">60</text>
+<path d="M753.0 390.0 L753.0 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="753.0" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">75</text>
+<path d="M883.8 390.0 L883.8 394.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="883.8" y="404.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">90</text>
+<text x="500.0" y="422.0" font-size="11" fill="#6b6b66" font-weight="600" text-anchor="middle" dominant-baseline="central">symbol number in the frame (0–7 header, 8–92 payload) — one symbol = 32.8 ms, 93 symbols = 3.05 s</text>
+<text x="38.0" y="225.0" font-size="11" fill="#6b6b66" font-weight="600" text-anchor="middle" dominant-baseline="central">bins</text>
+<path d="M90.0 270.5 L910.0 270.5" fill="none" stroke="#B45309" stroke-width="1.2" stroke-dasharray="6 4"/>
+<polyline points="98.7,304.8 107.4,306.8 116.2,305.2 124.9,307.8 133.6,308.8 142.3,307.8 151.1,304.6 159.8,304.7 168.5,305.8 177.2,310.8 186.0,304.3 194.7,308.7 203.4,308.7 212.1,310.6 220.9,307.8 229.6,304.2 238.3,309.9 247.0,304.7 255.7,309.6 264.5,303.2 273.2,301.3 281.9,301.8 290.6,303.0 299.4,308.8 308.1,305.5 316.8,297.8 325.5,303.9 334.3,306.2 343.0,293.1 351.7,302.3 360.4,290.8 369.1,297.1 377.9,299.4 386.6,301.8 395.3,290.2 404.0,288.6 412.8,297.0 421.5,285.6 430.2,296.2 438.9,293.4 447.7,283.5 456.4,289.0 465.1,290.3 473.8,289.5 482.6,283.0 491.3,285.8 500.0,282.0 508.7,280.4 517.4,274.7 526.2,273.6 534.9,272.9 543.6,276.9 552.3,272.8 561.1,275.2 569.8,269.1 578.5,273.2 587.2,269.8 596.0,269.6 604.7,263.8 613.4,264.3 622.1,262.2 630.9,263.7 639.6,261.9 648.3,257.0 657.0,258.4 665.7,257.1 674.5,254.5 683.2,253.7 691.9,251.2 700.6,250.2 709.4,248.9 718.1,247.3 726.8,245.6 735.5,244.3 744.3,242.6 753.0,241.3 761.7,239.5 770.4,239.1 779.1,236.9 787.9,235.8 796.6,234.3 805.3,233.8 814.0,230.9 822.8,230.3 831.5,229.3 840.2,225.4 848.9,227.3 857.7,220.8 866.4,222.9 875.1,222.8 883.8,221.6 892.6,215.9 901.3,219.2" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linejoin="round" stroke-opacity="1"/>
+<circle cx="98.7" cy="304.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="107.4" cy="306.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="116.2" cy="305.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="124.9" cy="307.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="133.6" cy="308.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="142.3" cy="307.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="151.1" cy="304.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="159.8" cy="304.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="168.5" cy="305.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="177.2" cy="310.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="186.0" cy="304.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="194.7" cy="308.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="203.4" cy="308.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="212.1" cy="310.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="220.9" cy="307.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="229.6" cy="304.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="238.3" cy="309.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="247.0" cy="304.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="255.7" cy="309.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="264.5" cy="303.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="273.2" cy="301.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="281.9" cy="301.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="290.6" cy="303.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="299.4" cy="308.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="308.1" cy="305.5" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="316.8" cy="297.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="325.5" cy="303.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="334.3" cy="306.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="343.0" cy="293.1" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="351.7" cy="302.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="360.4" cy="290.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="369.1" cy="297.1" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="377.9" cy="299.4" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="386.6" cy="301.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="395.3" cy="290.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="404.0" cy="288.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="412.8" cy="297.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="421.5" cy="285.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="430.2" cy="296.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="438.9" cy="293.4" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="447.7" cy="283.5" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="456.4" cy="289.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="465.1" cy="290.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="473.8" cy="289.5" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="482.6" cy="283.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="491.3" cy="285.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="500.0" cy="282.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="508.7" cy="280.4" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="517.4" cy="274.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="526.2" cy="273.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="534.9" cy="272.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="543.6" cy="276.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="552.3" cy="272.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="561.1" cy="275.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="569.8" cy="269.1" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="578.5" cy="273.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="587.2" cy="269.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="596.0" cy="269.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="604.7" cy="263.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="613.4" cy="264.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="622.1" cy="262.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="630.9" cy="263.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="639.6" cy="261.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="648.3" cy="257.0" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="657.0" cy="258.4" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="665.7" cy="257.1" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="674.5" cy="254.5" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="683.2" cy="253.7" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="691.9" cy="251.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="700.6" cy="250.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="709.4" cy="248.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="718.1" cy="247.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="726.8" cy="245.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="735.5" cy="244.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="744.3" cy="242.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="753.0" cy="241.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="761.7" cy="239.5" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="770.4" cy="239.1" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="779.1" cy="236.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="787.9" cy="235.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="796.6" cy="234.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="805.3" cy="233.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="814.0" cy="230.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="822.8" cy="230.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="831.5" cy="229.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="840.2" cy="225.4" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="848.9" cy="227.3" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="857.7" cy="220.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="866.4" cy="222.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="875.1" cy="222.8" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="883.8" cy="221.6" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="892.6" cy="215.9" r="2.2" fill="#1d4ed8" stroke="none"/>
+<circle cx="901.3" cy="219.2" r="2.2" fill="#1d4ed8" stroke="none"/>
+<polyline points="98.7,304.8 107.4,302.8 116.2,304.3 124.9,301.8 133.6,300.8 142.3,301.8 151.1,305.0 159.8,304.9 168.5,303.8 177.2,298.8 186.0,305.3 194.7,300.9 203.4,300.9 212.1,299.0 220.9,301.7 229.6,305.4 238.3,299.7 247.0,304.8 255.7,299.9 264.5,306.4 273.2,308.3 281.9,307.8 290.6,306.6 299.4,300.8 308.1,304.1 316.8,311.8 325.5,305.7 334.3,303.4 343.0,316.5 351.7,307.2 360.4,318.7 369.1,312.5 377.9,310.2 386.6,307.8 395.3,319.4 404.0,321.0 412.8,312.5 421.5,324.0 430.2,313.4 438.9,316.2 447.7,326.0 456.4,320.5 465.1,319.2 473.8,320.1 482.6,326.6 491.3,323.8 500.0,327.6 508.7,329.2 517.4,334.8 526.2,336.0 534.9,336.7 543.6,332.7 552.3,336.8 561.1,334.4 569.8,340.5 578.5,336.4 587.2,339.8 596.0,340.0 604.7,345.8 613.4,345.3 622.1,347.4 630.9,345.9 639.6,347.7 648.3,352.6 657.0,351.2 665.7,352.5 674.5,355.1 683.2,355.8 691.9,358.4 700.6,359.4 709.4,360.7 718.1,362.3 726.8,363.9 735.5,365.2 744.3,367.0 753.0,368.3 761.7,370.1 770.4,370.5 779.1,372.7 787.9,373.8 796.6,375.3 805.3,375.8 814.0,378.7 822.8,379.3 831.5,380.3 840.2,384.2 848.9,382.2 857.7,388.8 866.4,386.7 875.1,386.8 883.8,388.0 892.6,393.7 901.3,390.4" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="6 4"/>
+<text x="107.4" y="77.1" font-size="11" fill="#A32D2D" font-weight="700" text-anchor="start" dominant-baseline="central">header</text>
+<text x="177.2" y="85.6" font-size="11" fill="#15803d" font-weight="700" text-anchor="start" dominant-baseline="central">GREEN: the reading lands in the right group of 4 bins → bits still correct</text>
+<text x="177.2" y="370.1" font-size="11" fill="#B91C1C" font-weight="700" text-anchor="start" dominant-baseline="central">RED: one bin (or more) too LOW → wrong bits → CRC fails</text>
+<text x="622.1" y="193.7" font-size="12" fill="#1d4ed8" font-weight="700" text-anchor="start" dominant-baseline="central">real frame: +45 Hz by the end</text>
+<text x="186.0" y="259.5" font-size="10" fill="#B45309" font-weight="700" text-anchor="start" dominant-baseline="central">half-bin line: from symbol 54 the argmax reads one bin high (harmless here)</text>
+<text x="517.4" y="313.2" font-size="11" fill="#B91C1C" font-weight="700" text-anchor="start" dominant-baseline="central">same drift downward: wrong bits from symbol 46 →</text>
+<path d="M90.0 445.0 L112.0 445.0" fill="none" stroke="#1d4ed8" stroke-width="2.4"/>
+<text x="118.0" y="445.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">position of each symbol's peak, receiver WITHOUT tracking (measured)</text>
+<path d="M558.9 445.0 L580.9 445.0" fill="none" stroke="#B91C1C" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="586.9" y="445.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">mirror image: the same drift going down</text>
+<text x="90.0" y="472.0" font-size="10.5" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">Why the asymmetry? The Semtech chip puts each symbol on the lowest bin of a group of 4, so readings 1–3 bins high are absorbed, 1 bin low is not (see next figure).</text>
+</svg>

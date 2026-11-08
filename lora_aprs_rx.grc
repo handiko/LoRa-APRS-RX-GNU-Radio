@@ -1,0 +1,1511 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: 'LoRa APRS receiver 432.150 MHz SF12/BW125/CR4-5: RTL-SDR -> own
+      LoRa PHY (stock de-chirp/FFT + 3 EPBs) -> APRS decode'
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: lora_aprs_rx
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: LoRa APRS RX 432.150 MHz (SF12 / 125 kHz / CR 4/5)
+    window_size: (1400,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: N
+  id: variable
+  parameters:
+    comment: Chips per symbol = FFT size (4096 at SF12)
+    value: 2**sf
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 92]
+    rotation: 0
+    state: enabled
+- name: bw
+  id: variable
+  parameters:
+    comment: LoRa bandwidth = chip rate [Hz]
+    value: 125e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [416, 12]
+    rotation: 0
+    state: enabled
+- name: center_freq
+  id: variable
+  parameters:
+    comment: 'LoRa APRS channel centre [Hz] (your network: 432.150 MHz).
+
+      Also used by Frame Sync to turn the measured CFO into a clock-drift correction.'
+    value: 432.150e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 12]
+    rotation: 0
+    state: enabled
+- name: cr
+  id: variable
+  parameters:
+    comment: 'Coding rate index 1 = 4/5 ("CR5").
+
+      INFORMATION ONLY: the decoder reads the real CR from each frame header.'
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 12]
+    rotation: 0
+    state: enabled
+- name: downchirp
+  id: variable
+  parameters:
+    comment: 'Conjugate of the base up-chirp at 1 sample/chip: the de-chirping reference'
+    value: list(np.exp(-2j*np.pi*(np.arange(N)**2/(2.0*N) - np.arange(N)/2.0)))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 172]
+    rotation: 0
+    state: enabled
+- name: if_offset
+  id: variable
+  parameters:
+    comment: 'RTL-SDR is tuned this far BELOW the channel so LoRa sits away from the
+      DC spike / IQ image;
+
+      the Xlating filter brings it back to 0 Hz.'
+    value: 200e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 92]
+    rotation: 0
+    state: enabled
+- name: ldro
+  id: variable
+  parameters:
+    comment: 'Low Data Rate Optimisation: ON for SF12/125k (32.8 ms symbols). SX127x/SX126x
+      firmware sets it automatically.'
+    value: 1 if (2**sf)/bw > 16e-3 else 0
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [816, 12]
+    rotation: 0
+    state: enabled
+- name: os_factor
+  id: variable
+  parameters:
+    comment: RTL-SDR samples per chip
+    value: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 92]
+    rotation: 0
+    state: enabled
+- name: preamble_len
+  id: variable
+  parameters:
+    comment: Programmed preamble length of the trackers (8 is the LoRa APRS default)
+    value: '8'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 12]
+    rotation: 0
+    state: enabled
+- name: rec_file
+  id: variable
+  parameters:
+    comment: 'PLAYBACK ONLY: complex64 IQ recorded at samp_rate, tuned to center_freq
+      - if_offset'
+    value: '"lora_aprs_432150_1Msps.cf32"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 172]
+    rotation: 0
+    state: enabled
+- name: rtl_gain
+  id: variable_qtgui_range
+  parameters:
+    comment: RF gain. Start ~30 dB; back off if a nearby tracker overloads the dongle.
+    gui_hint: 0,0,1,2
+    label: '"RTL-SDR gain [dB]"'
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.1'
+    stop: '49.6'
+    value: '35'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 12]
+    rotation: 0
+    state: enabled
+- name: rtl_ppm
+  id: variable
+  parameters:
+    comment: 'RTL-SDR crystal correction [ppm]. v3/v4 (TCXO): 0..1. Old dongles: measure
+      it.'
+    value: '35'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 92]
+    rotation: 0
+    state: enabled
+- name: rx_os
+  id: variable
+  parameters:
+    comment: 'Samples per chip into Frame Sync (500 kS/s): 4 sampling phases for fractional
+      timing'
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [584, 92]
+    rotation: 0
+    state: enabled
+- name: rx_rate
+  id: variable
+  parameters:
+    comment: Sample rate into Frame Sync
+    value: bw*rx_os
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 92]
+    rotation: 0
+    state: enabled
+- name: rx_taps
+  id: variable
+  parameters:
+    comment: 'Channel filter: pass the +-62.5 kHz LoRa channel, stop beyond 90 kHz'
+    value: firdes.low_pass(1.0, samp_rate, 80e3, 20e3)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [528, 172]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: 'RTL-SDR sample rate: 1.000 MS/s (must be an integer multiple of bw)'
+    value: bw*os_factor
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 92]
+    rotation: 0
+    state: enabled
+- name: sf
+  id: variable
+  parameters:
+    comment: 'Spreading factor (LoRa APRS standard: SF12)'
+    value: '12'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 12]
+    rotation: 0
+    state: enabled
+- name: sync_word
+  id: variable
+  parameters:
+    comment: 'LoRa APRS uses the SX127x private sync word 0x12 (on air: bins 8 and
+      16)'
+    value: '0x12'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [600, 12]
+    rotation: 0
+    state: enabled
+- name: t_sym
+  id: variable
+  parameters:
+    comment: 'Symbol time [s]: 32.77 ms at SF12/125k'
+    value: (2**sf)/bw
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [272, 92]
+    rotation: 0
+    state: enabled
+- name: aprs
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nLoRa APRS Parser -- message-only Embedded Python Block\
+      \ (EPB #5).\n\nInput  'pdu' : PDU (meta, u8vector) from the LoRa PHY Decoder's\
+      \ 'payload' port.\nOutput 'aprs': PDU (meta, u8vector) holding just the TNC2\
+      \ text line\n               (\"SRC>DST,PATH:info\") of every good packet, ready\
+      \ for a stock\n               Socket PDU / Message Debug / File-logging chain.\n\
+      \nLoRa APRS framing (lora-aprs / CA2RXU / OE5BPA firmware family):\n    3 header\
+      \ bytes  '<' 0xFF 0x01   then plain TNC2 text, no AX.25, no FCS.\n    (The LoRa\
+      \ CRC-16 is the only integrity check.)\n\nDecodes the APRS formats LoRa trackers\
+      \ and iGates actually send:\n    ! = / @      position, uncompressed or base-91\
+      \ compressed (+course/speed/alt)\n    ` '          Mic-E (lat/lon from the destination\
+      \ field, speed/course, alt)\n    ;  )         objects and items\n    :     \
+      \       messages (incl. ack/rej, message number)\n    >            status\n\
+      \    T#           telemetry (printed raw)\n    }            third-party (inner\
+      \ packet parsed recursively)\nAnything else is printed as raw info text.\n\"\
+      \"\"\nimport time\nimport urllib.parse\nimport pmt\nfrom gnuradio import gr\n\
+      \nSYMBOLS = {\n    '/>': 'car', '/<': 'motorcycle', '/[': 'jogger', '/b': 'bicycle',\
+      \ '/k': 'truck',\n    '/v': 'van', '/u': 'truck (18-wheeler)', '/j': 'jeep',\
+      \ '/R': 'RV', '/Y': 'yacht',\n    '/s': 'ship', '/f': 'fire truck', '/a': 'ambulance',\
+      \ '/O': 'balloon', '/^': 'aircraft',\n    '/X': 'helicopter', '/-': 'house',\
+      \ '/#': 'digipeater', '/&': 'gateway', '/_': 'weather station',\n    '/r': 'repeater',\
+      \ '/y': 'house + yagi', '/`': 'dish antenna', '/n': 'node',\n    '\\\\&': 'gateway\
+      \ (overlay)', 'L&': 'LoRa iGate', 'L#': 'LoRa digipeater',\n    'I&': 'iGate',\
+      \ '\\\\#': 'digipeater (overlay)', '/l': 'laptop', '/$': 'phone',\n}\n\nMICE_MSG\
+      \ = {7: 'Off Duty', 6: 'En Route', 5: 'In Service', 4: 'Returning',\n      \
+      \      3: 'Committed', 2: 'Special', 1: 'Priority', 0: 'EMERGENCY'}\n\n\ndef\
+      \ b91(s):\n    v = 0\n    for c in s:\n        v = v * 91 + (ord(c) - 33)\n\
+      \    return v\n\n\nclass blk(gr.basic_block):\n    \"\"\"LoRa APRS Parser: strips\
+      \ the '<\\\\xff\\\\x01' header and decodes TNC2 APRS\"\"\"\n\n    def __init__(self,\
+      \ show_bad_crc=False, log_path=''):\n        gr.basic_block.__init__(self, name='LoRa\
+      \ APRS Parser', in_sig=None, out_sig=None)\n        self.show_bad_crc = bool(show_bad_crc)\n\
+      \        self.log_path = str(log_path)\n        self.message_port_register_in(pmt.intern('pdu'))\n\
+      \        self.set_msg_handler(pmt.intern('pdu'), self.handle)\n        self.message_port_register_out(pmt.intern('aprs'))\n\
+      \        self.count = 0\n\n    # ================================================================\
+      \ entry\n    def handle(self, msg):\n        try:\n            meta = pmt.to_python(pmt.car(msg))\
+      \ or {}\n            data = bytes(pmt.u8vector_elements(pmt.cdr(msg)))\n   \
+      \     except Exception as e:                      # not a PDU\n            print('[APRS]\
+      \ bad PDU: %s' % e, flush=True)\n            return\n        crc = meta.get('crc',\
+      \ 'none')\n        if crc == 'FAIL' and not self.show_bad_crc:\n           \
+      \ print('[APRS] frame dropped: LoRa CRC failed (%d bytes)' % len(data), flush=True)\n\
+      \            return\n\n        if data[:3] == b'<\\xff\\x01':\n            text,\
+      \ framing = data[3:], 'LoRa-APRS'\n        else:\n            text, framing\
+      \ = data, 'no <FF01 header'\n        line = text.decode('utf-8', errors='replace').rstrip('\\\
+      r\\n\\x00')\n\n        self.count += 1\n        stamp = time.strftime('%H:%M:%S')\n\
+      \        print('\\n' + '=' * 72, flush=True)\n        print('[APRS #%d %s] %s\
+      \   (LoRa CRC %s, SNR %.1f dB, CFO %+.0f Hz, %s)'\n              % (self.count,\
+      \ stamp, line, crc, meta.get('snr_db', 0.0),\n                 meta.get('cfo_hz',\
+      \ 0.0), framing), flush=True)\n        for row in self.decode_tnc2(line):\n\
+      \            print('    ' + row, flush=True)\n        print('=' * 72, flush=True)\n\
+      \n        raw = line.encode('utf-8', errors='replace')\n        self.message_port_pub(pmt.intern('aprs'),\n\
+      \                              pmt.cons(pmt.car(msg), pmt.init_u8vector(len(raw),\
+      \ list(raw))))\n        if self.log_path:\n            try:\n              \
+      \  with open(self.log_path, 'a', encoding='utf-8') as f:\n                 \
+      \   f.write('%s\\t%s\\t%s\\n' % (time.strftime('%Y-%m-%d %H:%M:%S'), crc, line))\n\
+      \            except OSError as e:\n                print('[APRS] log write failed:\
+      \ %s' % e, flush=True)\n\n    # ================================================================\
+      \ TNC2\n    def decode_tnc2(self, line, depth=0):\n        rows = []\n     \
+      \   if '>' not in line or ':' not in line:\n            return ['(not a TNC2\
+      \ APRS line)']\n        head, info = line.split(':', 1)\n        src, rest =\
+      \ head.split('>', 1)\n        parts = rest.split(',')\n        dst, path = parts[0],\
+      \ parts[1:]\n        rows.append('From %s  to %s%s' % (src, dst, ('  via ' +\
+      \ ','.join(path)) if path else ''))\n        if not info:\n            return\
+      \ rows + ['(empty info field)']\n        try:\n            rows += self.decode_info(info,\
+      \ dst, depth)\n        except Exception as e:                       # malformed\
+      \ packet: show what we can\n            rows.append('Info (unparsed, %s): %s'\
+      \ % (e.__class__.__name__, info))\n        if depth == 0:\n            call\
+      \ = urllib.parse.quote('a/' + src, safe='')\n            rows.append('Map: \
+      \ https://aprs.fi/#!call=%s' % call)\n        return rows\n\n    def decode_info(self,\
+      \ info, dst, depth):\n        t = info[0]\n        if t in '!=':\n         \
+      \   return self.position(info[1:], 'Position%s' % (' (messaging)' if t == '='\
+      \ else ''))\n        if t in '/@':\n            return ['Time %s' % self.timestamp(info[1:8])]\
+      \ + \\\n                self.position(info[8:], 'Position%s' % (' (messaging)'\
+      \ if t == '@' else ''))\n        if t in '`\\'\\x1c\\x1d':\n            return\
+      \ self.mic_e(info, dst)\n        if t == ';':\n            name, live = info[1:10].rstrip(),\
+      \ info[10]\n            rows = ['Object \"%s\" (%s)  time %s' % (name, 'live'\
+      \ if live == '*' else 'killed',\n                                          \
+      \        self.timestamp(info[11:18]))]\n            return rows + self.position(info[18:],\
+      \ 'Object position')\n        if t == ')':\n            k = min([i for i in\
+      \ (info.find('!', 1), info.find('_', 1)) if i > 0] or [len(info)])\n       \
+      \     return ['Item \"%s\"' % info[1:k]] + self.position(info[k + 1:], 'Item\
+      \ position')\n        if t == ':':\n            to, body = info[1:10].strip(),\
+      \ info[11:]\n            num = ''\n            if '{' in body:\n           \
+      \     body, num = body.rsplit('{', 1)\n            if body.startswith('ack')\
+      \ or body.startswith('rej'):\n                return ['%s for message %s to\
+      \ %s' % (body[:3].upper(), body[3:], to)]\n            return ['Message to %s:\
+      \ \"%s\"%s' % (to, body, ('  [msg no %s]' % num) if num else '')]\n        if\
+      \ t == '>':\n            return ['Status: %s' % info[1:]]\n        if t == 'T':\n\
+      \            return ['Telemetry: %s' % info[1:]]\n        if t == '}' and depth\
+      \ < 3:\n            return ['Third-party packet:'] + ['  ' + r for r in self.decode_tnc2(info[1:],\
+      \ depth + 1)]\n        return ['Info: %s' % info]\n\n    # ================================================================\
+      \ helpers\n    @staticmethod\n    def timestamp(s):\n        if len(s) < 7:\n\
+      \            return s\n        if s[6] in 'z/':\n            return 'day %s\
+      \ %s:%s %s' % (s[0:2], s[2:4], s[4:6], 'UTC' if s[6] == 'z' else 'local')\n\
+      \        if s[6] == 'h':\n            return '%s:%s:%s UTC' % (s[0:2], s[2:4],\
+      \ s[4:6])\n        return s\n\n    @staticmethod\n    def sym(table, code):\n\
+      \        key = table + code\n        name = SYMBOLS.get(key) or SYMBOLS.get('\\\
+      \\' + code if table not in '/\\\\' else key, '')\n        return 'symbol %s%s%s'\
+      \ % (table, code, ('  (%s)' % name) if name else '')\n\n    @staticmethod\n\
+      \    def latlon_str(lat, lon):\n        return '%+.5f, %+.5f   (%s %s)' % (\n\
+      \            lat, lon,\n            \"%d\xB0%06.3f'%s\" % (int(abs(lat)), (abs(lat)\
+      \ % 1) * 60, 'N' if lat >= 0 else 'S'),\n            \"%d\xB0%06.3f'%s\" % (int(abs(lon)),\
+      \ (abs(lon) % 1) * 60, 'E' if lon >= 0 else 'W'))\n\n    def position(self,\
+      \ s, label):\n        if not s:\n            return ['%s: (missing)' % label]\n\
+      \        if s[0].isdigit() or s[0] == ' ':\n            return self.pos_uncompressed(s,\
+      \ label)\n        return self.pos_compressed(s, label)\n\n    def pos_uncompressed(self,\
+      \ s, label):\n        lat_s, table, lon_s, code, comment = s[0:8], s[8], s[9:18],\
+      \ s[18], s[19:]\n        lat = (int(lat_s[0:2]) + float(lat_s[2:7].replace('\
+      \ ', '0')) / 60.0) * \\\n            (1 if lat_s[7] in 'Nn' else -1)\n     \
+      \   lon = (int(lon_s[0:3]) + float(lon_s[3:8].replace(' ', '0')) / 60.0) * \\\
+      \n            (1 if lon_s[8] in 'Ee' else -1)\n        rows = ['%s: %s' % (label,\
+      \ self.latlon_str(lat, lon)),\n                '%s  (uncompressed)' % self.sym(table,\
+      \ code)]\n        motion = []\n        if len(comment) >= 7 and comment[3] ==\
+      \ '/' and comment[:3].isdigit() and comment[4:7].isdigit():\n            motion.append('course\
+      \ %d\xB0  speed %d km/h' % (int(comment[:3]),\n                            \
+      \                            round(int(comment[4:7]) * 1.852)))\n          \
+      \  comment = comment[7:]\n        i = comment.find('/A=')\n        if i >= 0\
+      \ and comment[i + 3:i + 9].lstrip('-').isdigit():\n            motion.append('alt\
+      \ %d m' % round(int(comment[i + 3:i + 9]) * 0.3048))\n            comment =\
+      \ comment[:i] + comment[i + 9:]\n        if motion:\n            rows.append('\
+      \  '.join(motion))\n        if comment.strip():\n            rows.append('Comment:\
+      \ %s' % comment.strip())\n        return rows\n\n    def pos_compressed(self,\
+      \ s, label):\n        table, lat4, lon4, code, cs, ctype, comment = s[0], s[1:5],\
+      \ s[5:9], s[9], s[10:12], s[12], s[13:]\n        lat = 90.0 - b91(lat4) / 380926.0\n\
+      \        lon = -180.0 + b91(lon4) / 190463.0\n        rows = ['%s: %s' % (label,\
+      \ self.latlon_str(lat, lon)),\n                '%s  (compressed)' % self.sym(table,\
+      \ code)]\n        motion = []\n        if cs[0] != ' ':\n            c, sp =\
+      \ ord(cs[0]) - 33, ord(cs[1]) - 33\n            T = ord(ctype) - 33\n      \
+      \      if (T & 0x18) == 0x10:                                  # GGA source\
+      \ -> altitude\n                motion.append('alt %d m' % round((1.002 ** (c\
+      \ * 91 + sp)) * 0.3048))\n            elif 0 <= c <= 89:\n                motion.append('course\
+      \ %d\xB0  speed %d km/h'\n                              % (c * 4, round((1.08\
+      \ ** sp - 1) * 1.852)))\n            elif c == 90:\n                motion.append('radio\
+      \ range %.0f km' % (2 * 1.08 ** sp * 1.609))\n        i = comment.find('/A=')\n\
+      \        if i >= 0 and comment[i + 3:i + 9].lstrip('-').isdigit():\n       \
+      \     motion.append('alt %d m' % round(int(comment[i + 3:i + 9]) * 0.3048))\n\
+      \            comment = comment[:i] + comment[i + 9:]\n        if motion:\n \
+      \           rows.append('  '.join(motion))\n        if comment.strip():\n  \
+      \          rows.append('Comment: %s' % comment.strip())\n        return rows\n\
+      \n    def mic_e(self, info, dst):\n        d = dst.split('-')[0]\n        if\
+      \ len(d) < 6 or len(info) < 9:\n            return ['Mic-E (truncated): %s'\
+      \ % info]\n        digits, bits, custom = [], [], False\n        for ch in d[:6]:\n\
+      \            if ch.isdigit():\n                digits.append(int(ch)); bits.append(0)\n\
+      \            elif 'A' <= ch <= 'J':\n                digits.append(ord(ch) -\
+      \ 65); bits.append(1); custom = True\n            elif 'P' <= ch <= 'Y':\n \
+      \               digits.append(ord(ch) - 80); bits.append(1)\n            elif\
+      \ ch in 'KLZ':\n                digits.append(0); bits.append(0 if ch == 'L'\
+      \ else 1); custom |= ch == 'K'\n            else:\n                return ['Mic-E\
+      \ (bad destination %s): %s' % (dst, info)]\n        lat = digits[0] * 10 + digits[1]\
+      \ + (digits[2] * 10 + digits[3] + (digits[4] * 10 + digits[5]) / 100.0) / 60.0\n\
+      \        north = d[3] >= 'P'\n        lon_off = 100 if d[4] >= 'P' else 0\n\
+      \        west = d[5] >= 'P'\n        lat = lat if north else -lat\n\n      \
+      \  deg = ord(info[1]) - 28 + lon_off\n        if 180 <= deg <= 189:\n      \
+      \      deg -= 80\n        elif 190 <= deg <= 199:\n            deg -= 190\n\
+      \        mins = ord(info[2]) - 28\n        if mins >= 60:\n            mins\
+      \ -= 60\n        hund = ord(info[3]) - 28\n        lon = deg + (mins + hund\
+      \ / 100.0) / 60.0\n        lon = -lon if west else lon\n\n        sp, dc, se\
+      \ = ord(info[4]) - 28, ord(info[5]) - 28, ord(info[6]) - 28\n        speed =\
+      \ sp * 10 + dc // 10\n        if speed >= 800:\n            speed -= 800\n \
+      \       course = (dc % 10) * 100 + se\n        if course >= 400:\n         \
+      \   course -= 400\n        code, table, comment = info[7], info[8], info[9:]\n\
+      \n        msg_id = bits[0] * 4 + bits[1] * 2 + bits[2]\n        status = ('Custom-%d'\
+      \ % msg_id) if custom else MICE_MSG.get(msg_id, '?')\n        rows = ['Mic-E\
+      \ position: %s' % self.latlon_str(lat, lon),\n                '%s   status:\
+      \ %s' % (self.sym(table, code), status)]\n        motion = ['course %d\xB0 \
+      \ speed %d km/h' % (course, round(speed * 1.852))]\n        # optional altitude:\
+      \ 3 base-91 chars followed by '}' (metres + 10000)\n        for k in (0, 1):\n\
+      \            if len(comment) >= k + 4 and comment[k + 3] == '}':\n         \
+      \       motion.append('alt %d m' % (b91(comment[k:k + 3]) - 10000))\n      \
+      \          comment = comment[:k] + comment[k + 4:]\n                break\n\
+      \        rows.append('  '.join(motion))\n        comment = comment.lstrip('>]`\\\
+      '').rstrip()\n        if comment:\n            rows.append('Comment: %s' % comment)\n\
+      \        return rows\n"
+    affinity: ''
+    alias: ''
+    comment: 'EPB #3: strip "<\xff\x01", parse TNC2 APRS,
+
+      print position / Mic-E / message / status.
+
+      log_path="lora_aprs.log" to keep a log.'
+    log_path: '""'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    show_bad_crc: 'False'
+  states:
+    _io_cache: '(''LoRa APRS Parser'', ''blk'', [(''show_bad_crc'', ''False''), (''log_path'',
+      "''''")], [(''pdu'', ''message'', 1)], [(''aprs'', ''message'', 1)], "LoRa APRS
+      Parser: strips the ''<\\xff\\x01'' header and decodes TNC2 APRS", [''log_path'',
+      ''show_bad_crc''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1700, 920]
+    rotation: 0
+    state: enabled
+- name: argmax
+  id: blocks_argmax_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Strongest bin = symbol value
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    type: float
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1272, 940]
+    rotation: 0
+    state: enabled
+- name: argmax_null
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: short
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1448, 1030]
+    rotation: 0
+    state: enabled
+- name: dechirp
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: DE-CHIRP each aligned symbol
+    const: downchirp
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [704, 960]
+    rotation: 0
+    state: enabled
+- name: fft_sync
+  id: fft_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_size: N
+    forward: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nthreads: '1'
+    shift: 'False'
+    type: complex
+    window: window.rectangular(N)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [904, 940]
+    rotation: 0
+    state: enabled
+- name: file_source
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: 'PLAYBACK: enable this + Throttle, disable the RTL-SDR source.'
+    file: rec_file
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 440]
+    rotation: 0
+    state: disabled
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: import numpy as np
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 172]
+    rotation: 0
+    state: enabled
+- name: lora_dec
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nLoRa PHY Decoder -- inverse of the LoRa PHY chain (same\
+      \ design as\nlora_trx_sim.grc, EPB #4).\n\nInput : int16 symbol values (FFT\
+      \ argmax bins) from the stock Argmax block.\n        A 'frame_start' tag (set\
+      \ by the Frame Sync block, carried through the\n        stock Multiply/FFT/Mag^2/Argmax\
+      \ blocks) marks the first symbol of a frame.\n\nPer symbol:   bin -> (bin -\
+      \ 1) mod N -> Gray code -> (>> 2 for reduced rate)\nPer block:    de-interleave\
+      \ (undo the diagonal) -> Hamming decode -> nibbles\nHeader block: 8 symbols,\
+      \ SF-2 bits, CR 4/8 -> length, CR, CRC flag, checksum.\n              Result\
+      \ is sent back to Frame Sync ('frame_info') so it knows how\n              many\
+      \ more symbols to cut out of the stream.\nPayload:      nibbles (low first)\
+      \ -> bytes -> de-whiten -> CRC-16 check.\n\nMessage out 'frame_info': {'n_sym':\
+      \ n} or {'abort': True}\nMessage out 'payload'   : PDU (meta dict, u8vector)\
+      \ for every decoded frame.\n\"\"\"\nimport numpy as np\nimport pmt\nfrom gnuradio\
+      \ import gr\n\n\ndef lora_n_payload_symbols(sf, cr, payload_len, has_crc, ldro):\n\
+      \    num = 8 * payload_len - 4 * sf + 28 + 16 * int(bool(has_crc))\n    den\
+      \ = 4 * (sf - 2 * int(bool(ldro)))\n    return 8 + max(-(-num // den) * (cr\
+      \ + 4), 0)\n\n\ndef hamming_enc(nib, cr_app):                       # identical\
+      \ to the TX encoder\n    d = [(nib >> 3) & 1, (nib >> 2) & 1, (nib >> 1) & 1,\
+      \ nib & 1]\n    if cr_app == 1:\n        p4 = d[0] ^ d[1] ^ d[2] ^ d[3]\n  \
+      \      return (d[3] << 4) | (d[2] << 3) | (d[1] << 2) | (d[0] << 1) | p4\n \
+      \   p0 = d[3] ^ d[2] ^ d[1]\n    p1 = d[2] ^ d[1] ^ d[0]\n    p2 = d[3] ^ d[2]\
+      \ ^ d[0]\n    p3 = d[3] ^ d[1] ^ d[0]\n    cw = ((d[3] << 7) | (d[2] << 6) |\
+      \ (d[1] << 5) | (d[0] << 4) |\n          (p0 << 3) | (p1 << 2) | (p2 << 1) |\
+      \ p3)\n    return cw >> (4 - cr_app)\n\n\nclass blk(gr.sync_block):\n    \"\"\
+      \"LoRa PHY Decoder: Gray, de-interleave, Hamming, header, de-whiten, CRC\"\"\
+      \"\n\n    def __init__(self, sf=12, ldro=1, verbose=True):\n        gr.sync_block.__init__(self,\
+      \ name='LoRa PHY Decoder',\n                               in_sig=[np.int16],\
+      \ out_sig=None)\n        self.sf = int(sf)\n        self.N = 1 << self.sf\n\
+      \        self.ldro = bool(ldro)\n        self.verbose = bool(verbose)\n    \
+      \    seq, reg = [], 0xFF\n        for _ in range(255):\n            seq.append(reg)\n\
+      \            fb = ((reg >> 7) ^ (reg >> 5) ^ (reg >> 4) ^ (reg >> 3)) & 1\n\
+      \            reg = ((reg << 1) & 0xFF) | fb\n        self.whitening_seq = np.array(seq,\
+      \ dtype=np.uint8)\n        # code books for nearest-codeword decoding\n    \
+      \    self.book = {c: [hamming_enc(n, c) for n in range(16)] for c in (1, 2,\
+      \ 3, 4)}\n        self.message_port_register_out(pmt.intern('frame_info'))\n\
+      \        self.message_port_register_out(pmt.intern('payload'))\n        self.syms\
+      \ = None\n        self.hdr = None\n        self.meta = {}\n        self.stats\
+      \ = {'frames': 0, 'crc_ok': 0, 'crc_bad': 0, 'hdr_bad': 0}\n\n    # ----------------\
+      \ symbol -> bits ----------------\n    def sym_to_word(self, s, reduced):\n\
+      \        v = (int(s) - 1) % self.N          # undo the +1 shift\n        v ^=\
+      \ v >> 1                        # Gray code (undoes TX inverse-Gray)\n     \
+      \   return v >> 2 if reduced else v    # reduced rate: drop the 2 LSBs\n\n \
+      \   @staticmethod\n    def deinterleave(words, sf_app, cw_len):\n        cws\
+      \ = []\n        for k in range(sf_app):\n            c = 0\n            for\
+      \ i in range(cw_len):\n                j = (i - k - 1) % sf_app\n          \
+      \      c = (c << 1) | ((words[i] >> (sf_app - 1 - j)) & 1)\n            cws.append(c)\n\
+      \        return cws\n\n    def hamming_dec(self, cw, cr_app):\n        if cr_app\
+      \ >= 3:                    # 4/7, 4/8: correct 1 bit (nearest codeword)\n  \
+      \          dists = [bin(cw ^ c).count('1') for c in self.book[cr_app]]\n   \
+      \         return int(np.argmin(dists))\n        top = cw >> cr_app         \
+      \        # 4/5, 4/6: detection only, just read data bits\n        return ((top\
+      \ >> 3) & 1) | (((top >> 2) & 1) << 1) | (((top >> 1) & 1) << 2) | ((top & 1)\
+      \ << 3)\n\n    def block_nibbles(self, syms, sf_app, cr_app):\n        reduced\
+      \ = sf_app != self.sf\n        words = [self.sym_to_word(s, reduced) for s in\
+      \ syms]\n        return [self.hamming_dec(c, cr_app)\n                for c\
+      \ in self.deinterleave(words, sf_app, cr_app + 4)]\n\n    @staticmethod\n  \
+      \  def crc16(data):\n        crc = 0\n        for byte in data:\n          \
+      \  byte = int(byte)\n            for _ in range(8):\n                if ((crc\
+      \ & 0x8000) >> 8) ^ (byte & 0x80):\n                    crc = ((crc << 1) ^\
+      \ 0x1021) & 0xFFFF\n                else:\n                    crc = (crc <<\
+      \ 1) & 0xFFFF\n                byte = (byte << 1) & 0xFF\n        return crc\n\
+      \n    # ---------------- frame logic ----------------\n    def parse_header(self):\n\
+      \        nib = self.block_nibbles(self.syms[:8], self.sf - 2, 4)\n        h0,\
+      \ h1, h2, c4n, c30 = nib[:5]\n        b = lambda v, k: (v >> k) & 1\n      \
+      \  c4 = b(h0, 3) ^ b(h0, 2) ^ b(h0, 1) ^ b(h0, 0)\n        c3 = b(h0, 3) ^ b(h1,\
+      \ 3) ^ b(h1, 2) ^ b(h1, 1) ^ b(h2, 0)\n        c2 = b(h0, 2) ^ b(h1, 3) ^ b(h1,\
+      \ 0) ^ b(h2, 3) ^ b(h2, 1)\n        c1 = b(h0, 1) ^ b(h1, 2) ^ b(h1, 0) ^ b(h2,\
+      \ 2) ^ b(h2, 1) ^ b(h2, 0)\n        c0 = b(h0, 0) ^ b(h1, 1) ^ b(h2, 3) ^ b(h2,\
+      \ 2) ^ b(h2, 1) ^ b(h2, 0)\n        L, cr, crc = (h0 << 4) | h1, h2 >> 1, h2\
+      \ & 1\n        if (c4n & 1) != c4 or c30 != ((c3 << 3) | (c2 << 2) | (c1 <<\
+      \ 1) | c0) \\\n                or L == 0 or not 1 <= cr <= 4:\n            return\
+      \ None\n        return {'len': L, 'cr': cr, 'crc': crc, 'nibs': nib[5:],\n \
+      \               'n_sym': lora_n_payload_symbols(self.sf, cr, L, crc, self.ldro)}\n\
+      \n    def finish_frame(self):\n        h = self.hdr\n        nibs = list(h['nibs'])\n\
+      \        sf_app = self.sf - 2 if self.ldro else self.sf\n        cw_len = 4\
+      \ + h['cr']\n        rest = self.syms[8:h['n_sym']]\n        for i in range(0,\
+      \ len(rest), cw_len):\n            nibs += self.block_nibbles(rest[i:i + cw_len],\
+      \ sf_app, h['cr'])\n        L = h['len']\n        wh = np.array([nibs[2 * i]\
+      \ | (nibs[2 * i + 1] << 4) for i in range(L)], dtype=np.uint8)\n        payload\
+      \ = wh ^ self.whitening_seq[:L]\n        crc_ok = None\n        if h['crc']:\n\
+      \            cn = nibs[2 * L:2 * L + 4]\n            rx_crc = cn[0] | (cn[1]\
+      \ << 4) | (cn[2] << 8) | (cn[3] << 12)\n            calc = self.crc16(payload[:-2])\
+      \ ^ int(payload[-1]) ^ (int(payload[-2]) << 8)\n            crc_ok = rx_crc\
+      \ == calc\n        self.stats['frames'] += 1\n        self.stats['crc_ok' if\
+      \ crc_ok in (True, None) else 'crc_bad'] += 1\n        meta = dict(self.meta)\n\
+      \        meta.update({'len': L, 'cr': '4/%d' % (4 + h['cr']),\n            \
+      \         'crc': {True: 'OK', False: 'FAIL', None: 'none'}[crc_ok]})\n     \
+      \   self.message_port_pub(pmt.intern('payload'),\n                         \
+      \     pmt.cons(pmt.to_pmt(meta), pmt.init_u8vector(L, payload.tolist())))\n\
+      \        if self.verbose:\n            print('[LoRa RX] frame %d  len %d  CR\
+      \ %s  CRC %s  CFO %+.0f Hz  SNR %.1f dB'\n                  % (self.stats['frames'],\
+      \ L, meta['cr'], meta['crc'],\n                     meta.get('cfo_hz', 0.0),\
+      \ meta.get('snr_db', 0.0)), flush=True)\n\n    def work(self, input_items, output_items):\n\
+      \        inp = input_items[0]\n        base = self.nitems_read(0)\n        starts\
+      \ = {t.offset - base: t for t in\n                  self.get_tags_in_window(0,\
+      \ 0, len(inp), pmt.intern('frame_start'))}\n        for i in range(len(inp)):\n\
+      \            if i in starts:\n                self.syms, self.hdr = [], None\n\
+      \                try:\n                    self.meta = pmt.to_python(starts[i].value)\n\
+      \                except Exception:\n                    self.meta = {}\n   \
+      \         if self.syms is None:\n                continue\n            self.syms.append(int(inp[i]))\n\
+      \            if self.hdr is None and len(self.syms) == 8:\n                self.hdr\
+      \ = self.parse_header()\n                if self.hdr is None:\n            \
+      \        self.stats['hdr_bad'] += 1\n                    if self.verbose:\n\
+      \                        print('[LoRa RX] header checksum failed', flush=True)\n\
+      \                    self.message_port_pub(pmt.intern('frame_info'),\n     \
+      \                                     pmt.to_pmt({'abort': True}))\n       \
+      \             self.syms = None\n                    continue\n             \
+      \   self.message_port_pub(pmt.intern('frame_info'),\n                      \
+      \                pmt.to_pmt({'n_sym': self.hdr['n_sym']}))\n            if self.hdr\
+      \ is not None and len(self.syms) == self.hdr['n_sym']:\n                self.finish_frame()\n\
+      \                self.syms, self.hdr = None, None\n        return len(inp)\n"
+    affinity: ''
+    alias: ''
+    comment: 'EPB #2: Gray, de-interleave, Hamming, header,
+
+      de-whiten, CRC-16 -> payload PDU'
+    ldro: ldro
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    sf: sf
+    verbose: 'True'
+  states:
+    _io_cache: '(''LoRa PHY Decoder'', ''blk'', [(''sf'', ''12''), (''ldro'', ''1''),
+      (''verbose'', ''True'')], [(''0'', ''short'', 1)], [(''payload'', ''message'',
+      1), (''frame_info'', ''message'', 1)], ''LoRa PHY Decoder: Gray, de-interleave,
+      Hamming, header, de-whiten, CRC'', [''ldro'', ''sf'', ''verbose''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1448, 920]
+    rotation: 0
+    state: enabled
+- name: lora_sync
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nLoRa Frame Synchroniser -- the one part of a LoRa receiver\
+      \ GNU Radio has no\nstock block for: deciding WHERE each symbol starts and HOW\
+      \ FAR off-tune we are.\n(Same design as lora_trx_sim.grc, EPB #3.)\n\nInput\
+      \ : complex baseband at os samples per chip (samp_rate = os * bw)\nOutput: a\
+      \ complex STREAM, emitted in blocks of N = 2^SF samples, ONE BLOCK PER\n   \
+      \     PAYLOAD SYMBOL (a stock Stream to Vector N block downstream turns each\n\
+      \        block into one vector). Each block is already\n        - aligned to\
+      \ the symbol boundary (integer + fractional timing),\n        - decimated to\
+      \ 1 sample per chip at the best sampling phase,\n        - frequency-corrected\
+      \ (fractional + integer CFO),\n        - drift-corrected (sampling-clock offset\
+      \ derived from the CFO).\n        The de-chirp, FFT and argmax that turn these\
+      \ vectors into symbol\n        values are done DOWNSTREAM by stock blocks (Multiply\
+      \ Const, FFT,\n        Complex to Mag^2, Argmax).\n        The first sample\
+      \ of every frame carries a 'frame_start' stream tag.\n        (Why a stream\
+      \ and not a vector port: GRC sizes Embedded-Python ports\n        from the constructor's\
+      \ DEFAULT arguments, so a vector port would stay\n        at the default SF's\
+      \ length and turn the connection red for other SFs.)\n\nMessage in 'frame_info':\
+      \ the header decoder answers {'n_sym': n} (total symbols\n        incl. the\
+      \ 8 header symbols) or {'abort': True} after the first 8.\n\nState machine:\n\
+      \  DETECT  free-running de-chirp (window grid not aligned to anything).\n  \
+      \        A preamble = several consecutive windows whose FFT peak sits in\n \
+      \         the SAME bin.  That bin = timing offset + CFO (mixed together).\n\
+      \  ALIGN   (instant) fractional CFO from the peak's phase rotation between\n\
+      \          windows; fractional timing by trying all os sampling phases;\n  \
+      \        shift the window grid by the peak bin -> up-chirps now land in bin\
+      \ 0.\n  SFD     step symbol by symbol, de-chirping each window with BOTH chirp\n\
+      \          directions.  Sync-word chirps show up as bins (8*hi, 8*lo).\n   \
+      \       The first window where the DOWN-chirp de-chirp wins is the SFD;\n  \
+      \        its bin = 2 x integer CFO  -> CFO and timing finally separated.\n \
+      \ OUTPUT  emit 8 header symbols, wait for the header decoder's length,\n   \
+      \       emit the rest, go back to DETECT.\n\"\"\"\nimport numpy as np\nimport\
+      \ pmt\nfrom gnuradio import gr\n\n\nclass blk(gr.basic_block):\n    \"\"\"LoRa\
+      \ Frame Sync: preamble detect, CFO/STO estimation, SFD, symbol windows\"\"\"\
+      \n\n    def __init__(self, sf=12, bw=125e3, samp_rate=500e3, sync_word=0x12,\n\
+      \                 preamble_len=8, center_freq=432.15e6, sro_comp=True, track=True,\n\
+      \                 verbose=True):\n        self.sf = int(sf)\n        self.N\
+      \ = 1 << self.sf\n        gr.basic_block.__init__(self, name='LoRa Frame Sync',\n\
+      \                                in_sig=[np.complex64],\n                  \
+      \              out_sig=[np.complex64])\n        self.set_output_multiple(self.N)\
+      \            # always emit whole symbols\n        self.bw = float(bw)\n    \
+      \    self.fs = float(samp_rate)\n        os_f = self.fs / self.bw\n        assert\
+      \ abs(os_f - round(os_f)) < 1e-9 and os_f >= 1, \\\n            'samp_rate must\
+      \ be an integer multiple of bw'\n        self.os = int(round(os_f))\n      \
+      \  self.L = self.N * self.os                    # input samples per symbol\n\
+      \        self.preamble_len = int(preamble_len)\n        sw = int(sync_word)\
+      \ & 0xFF\n        self.sync_syms = ((sw >> 4) << 3, (sw & 0x0F) << 3)\n    \
+      \    self.fc = float(center_freq)\n        self.sro_comp = bool(sro_comp) and\
+      \ self.fc > 0\n        self.verbose = bool(verbose)\n        self.track = bool(track)\n\
+      \        # Frequency tracking through the payload (2nd-order loop, units = FFT\
+      \ bins).\n        # Real trackers drift tens of Hz during a 3 s SF12 frame (PA\
+      \ warms the crystal);\n        # 1 bin is only 30.5 Hz at SF12/125k, so a frequency\
+      \ frozen at the preamble\n        # pushes late symbols into the neighbouring\
+      \ bin.\n        self.trk_g1 = 0.3                             # phase-detector\
+      \ -> frequency gain\n        self.trk_g2 = 0.02                            #\
+      \ -> frequency-rate gain (follows ramps)\n        self.trk_gate = 2.0 * np.log(self.N)\
+      \          # only learn from clearly-decided symbols\n        self.kk = np.arange(self.N)\n\
+      \n        n = np.arange(self.N)\n        self.up = np.exp(2j * np.pi * (n *\
+      \ n / (2.0 * self.N) - n / 2.0))  # base up-chirp, 1 sample/chip\n        self.down\
+      \ = np.conj(self.up)\n\n        self.DET = 3                               \
+      \   # consecutive matching windows = preamble\n        self.thr = 1.5 * np.log(self.N)\
+      \               # min peak-to-mean ratio of a window\n        # noise alone\
+      \ passes thr in ~N*exp(-thr) = 1.5 % of windows (SF12); three in a\n       \
+      \ # row within +-1 bin of each other: ~1e-12 per window -> no false alarms.\n\
+      \n        self.buf = np.zeros(0, dtype=np.complex64)\n        self.buf_start\
+      \ = 0                            # absolute index of buf[0]\n        self.pos\
+      \ = 0.0                                # absolute index of next window start\n\
+      \        self.reset()\n\n        self.message_port_register_in(pmt.intern('frame_info'))\n\
+      \        self.set_msg_handler(pmt.intern('frame_info'), self.handle_frame_info)\n\
+      \        self.set_tag_propagation_policy(gr.TPP_DONT)\n        self.frames =\
+      \ 0\n\n    # ------------------------------------------------------------ helpers\n\
+      \    def reset(self):\n        self.state = 'DETECT'\n        self.hist = []\
+      \          # DETECT: (start, Y, k) of recent windows\n        self.cfo_norm\
+      \ = 0.0     # applied CFO correction, cycles per input sample\n        self.up_bins\
+      \ = []       # SFD search: bins of up-chirp windows seen\n        self.L_eff\
+      \ = float(self.L)\n        self.trk_f = 0.0        # tracked extra frequency\
+      \ correction [bins]\n        self.trk_r = 0.0        # tracked drift rate [bins/symbol]\n\
+      \        self.trk_hist = []\n        self.n_out = 0\n        self.n_total =\
+      \ None\n        self.info = {}\n\n    def handle_frame_info(self, msg):\n  \
+      \      d = pmt.to_python(msg)\n        if self.state != 'OUTPUT':\n        \
+      \    return\n        if d.get('abort', False):\n            if self.verbose:\n\
+      \                print('[LoRa sync] header rejected -> back to DETECT', flush=True)\n\
+      \            self.reset()\n        else:\n            self.n_total = int(d['n_sym'])\n\
+      \n    def have(self, start, length):\n        s = int(round(start))\n      \
+      \  return s >= self.buf_start and s + length <= self.buf_start + len(self.buf)\n\
+      \n    def window(self, start, phase=0):\n        \"\"\"N samples, one per chip,\
+      \ starting at absolute sample start+phase, CFO-corrected.\"\"\"\n        idx\
+      \ = int(round(start)) + phase + np.arange(self.N) * self.os\n        x = self.buf[idx\
+      \ - self.buf_start].astype(np.complex128)\n        if self.cfo_norm != 0.0:\n\
+      \            x = x * np.exp(-2j * np.pi * ((self.cfo_norm * idx) % 1.0))\n \
+      \       return x\n\n    def spec_up(self, x):     # de-chirp UP-chirps (multiply\
+      \ by down-chirp), FFT\n        return np.fft.fft(x * self.down)\n\n    def spec_down(self,\
+      \ x):   # de-chirp DOWN-chirps (multiply by up-chirp), FFT\n        return np.fft.fft(x\
+      \ * self.up)\n\n    def signed(self, k):\n        return k - self.N if k >=\
+      \ self.N // 2 else k\n\n    # ------------------------------------------------------------\
+      \ states\n    def step_detect(self):\n        if not self.have(self.pos, self.L\
+      \ + self.os):\n            return False\n        Y = self.spec_up(self.window(self.pos))\n\
+      \        P = np.abs(Y) ** 2\n        k = int(np.argmax(P))\n        ratio =\
+      \ P[k] / (np.mean(P) + 1e-30)\n        if ratio > self.thr:\n            self.hist.append((self.pos,\
+      \ Y, k))\n            self.hist = self.hist[-self.DET:]\n        else:\n   \
+      \         self.hist = []\n        if len(self.hist) == self.DET:\n         \
+      \   ks = [h[2] for h in self.hist]\n            ok = all(abs(self.signed((ks[i\
+      \ + 1] - ks[i]) % self.N)) <= 1\n                     for i in range(self.DET\
+      \ - 1))\n            if ok:\n                self.align()\n                return\
+      \ True\n            self.hist = self.hist[1:]\n        self.pos += self.L\n\
+      \        return True\n\n    def align(self):\n        # (1) fractional CFO:\
+      \ the preamble is periodic, so window i+1 is window i\n        #     rotated\
+      \ by 2*pi*CFO[bins].  Only the fraction of a bin is visible.\n        k0 = self.hist[-1][2]\n\
+      \        z = sum(self.hist[i + 1][1][k0] * np.conj(self.hist[i][1][k0])\n  \
+      \              for i in range(self.DET - 1))\n        cfo_frac = np.angle(z)\
+      \ / (2 * np.pi)                     # bins, (-0.5, 0.5]\n        self.cfo_norm\
+      \ = cfo_frac / self.L                         # cycles / input sample\n\n  \
+      \      # (2) fractional timing: try every sampling phase, keep the sharpest\
+      \ peak\n        w = self.hist[-1][0]\n        best = (-1.0, 0, 0)\n        for\
+      \ d in range(self.os):\n            P = np.abs(self.spec_up(self.window(w, d)))\
+      \ ** 2 + \\\n                np.abs(self.spec_up(self.window(w - self.L, d)))\
+      \ ** 2\n            k = int(np.argmax(P))\n            if P[k] > best[0]:\n\
+      \                best = (P[k], d, k)\n        Pk, d, k = best\n        P = np.abs(self.spec_up(self.window(w,\
+      \ d))) ** 2\n        noise = (np.sum(P) - P[k]) / (self.N - 1)\n        snr\
+      \ = 10 * np.log10(max(P[k] - noise, 1e-12) / (self.N * noise + 1e-30))\n\n \
+      \       # (3) integer alignment: peak bin k = timing offset + integer CFO (chips).\n\
+      \        #     Shift the grid by k chips so preamble up-chirps de-chirp to bin\
+      \ 0.\n        self.pos = w + d - self.signed(k) * self.os\n        self.info\
+      \ = {'cfo_frac_bins': float(cfo_frac), 'preamble_bin': int(k),\n           \
+      \          'phase': int(d), 'snr_db': float(snr)}\n        self.state = 'SFD'\n\
+      \        self.up_bins = []\n        self.align_pos = self.pos              \
+      \   # reference instant for drift correction\n\n    def step_sfd(self):\n  \
+      \      if not self.have(self.pos, self.L + self.os):\n            return False\n\
+      \        x = self.window(self.pos)\n        Pu = np.abs(self.spec_up(x)) **\
+      \ 2\n        Pd = np.abs(self.spec_down(x)) ** 2\n        ku, kd = int(np.argmax(Pu)),\
+      \ int(np.argmax(Pd))\n        if Pd[kd] <= Pu[ku]:                       # still\
+      \ an up-chirp (preamble / sync)\n            self.up_bins.append(ku)\n     \
+      \       if len(self.up_bins) > self.preamble_len + 4:\n                self.reset()\
+      \                       # never found an SFD: false alarm\n            self.pos\
+      \ += self.L\n            return True\n\n        # ---- SFD found.\n        #\
+      \ Since ALIGN the grid has stepped by the nominal L, so clock drift has moved\n\
+      \        # it by d chips (0.25 chip/symbol at SF12 per 60 ppm).  Up-chirps read\
+      \ s + d,\n        # the SFD down-chirp reads 2*CFO - d.  d is measured from\
+      \ the sync word.\n        sync = tuple(self.up_bins[-2:])\n        err = [self.signed((sync[i]\
+      \ - self.sync_syms[i]) % self.N) for i in range(len(sync))]\n        d = float(np.mean(err))\
+      \ if len(err) == 2 else 0.0\n        sw_ok = len(sync) == 2 and abs(d) <= 3.5\
+      \ and all(abs(e - d) <= 1 for e in err)\n        f_int = int(np.round((self.signed(kd)\
+      \ + d) / 2.0))\n        if not sw_ok:\n            if self.verbose:\n      \
+      \          print('[LoRa sync] SFD found but sync word bins %s != %s -> ignored'\n\
+      \                      % (sync, self.sync_syms), flush=True)\n            self.pos\
+      \ += self.L\n            self.reset()\n            return True\n\n        self.cfo_norm\
+      \ += f_int / float(self.L)\n        cfo_hz = self.cfo_norm * self.fs\n     \
+      \   # The grid we aligned on was early by f_int chips (CFO masqueraded as timing).\n\
+      \        # While searching for the SFD we stepped by the nominal L; the real\
+      \ symbol\n        # length is L_eff (TX and RX each derive carrier AND chip\
+      \ clock from one\n        # crystal -> relative clock error = -CFO/fc), so the\
+      \ payload start is\n        # recomputed from the alignment instant with L_eff.\n\
+      \        if self.sro_comp:\n            self.L_eff = self.L * (1.0 - cfo_hz\
+      \ / self.fc)\n        n_steps = int(round((self.pos - self.align_pos) / self.L))\n\
+      \        self.pos = self.align_pos + f_int * self.os + (n_steps + 2.25) * self.L_eff\n\
+      \        self.info.update({'cfo_int_bins': f_int, 'cfo_hz': float(cfo_hz),\n\
+      \                          'sync_bins': [int(b) for b in sync], 'drift_chips':\
+      \ d})\n        self.state = 'OUTPUT'\n        self.n_out, self.n_total = 0,\
+      \ None\n        self.frames += 1\n        if self.verbose:\n            print('[LoRa\
+      \ sync] frame %d: SNR %.1f dB, CFO %+.0f Hz (%d + %.2f bins), '\n          \
+      \        'sync word bins %s (drift %+.1f chips), sampling phase %d/%d'\n   \
+      \               % (self.frames, self.info['snr_db'], cfo_hz, f_int,\n      \
+      \               self.info['cfo_frac_bins'], list(sync), d, self.info['phase'],\
+      \ self.os),\n                  flush=True)\n        return True\n\n    def step_output(self,\
+      \ out, nout):\n        limit = 8 if self.n_total is None else self.n_total\n\
+      \        if self.n_out >= limit:\n            if self.n_total is not None: \
+      \           # frame complete\n                if self.verbose and self.track\
+      \ and self.trk_hist:\n                    print('[LoRa sync] frame %d: frequency\
+      \ tracked %+.0f Hz over the payload'\n                          % (self.frames,\
+      \ (self.trk_hist[-1] - self.trk_hist[0]) * self.bw / self.N),\n            \
+      \              flush=True)\n                self.reset()\n                return\
+      \ nout, True\n            # waiting for the header decoder; give up after ~64\
+      \ symbols of input\n            if self.buf_start + len(self.buf) - self.pos\
+      \ > 64 * self.L:\n                self.reset()\n                return nout,\
+      \ True\n            return nout, False\n        if nout + self.N > len(out)\
+      \ or not self.have(self.pos, self.L + self.os):\n            return nout, False\n\
+      \        x = self.window(self.pos)\n        if self.track:\n            # predict:\
+      \ apply the frequency expected for this symbol, then measure how far\n     \
+      \       # its de-chirped peak still sits from the bin centre and update the\
+      \ loop\n            x = x * np.exp(-2j * np.pi * self.trk_f * self.kk / self.N)\n\
+      \            Y = np.fft.fft(x * self.down)\n            P = Y.real ** 2 + Y.imag\
+      \ ** 2\n            m = int(np.argmax(P))\n            if P[m] > self.trk_gate\
+      \ * np.mean(P):\n                a, b, c = Y[(m - 1) % self.N], Y[m], Y[(m +\
+      \ 1) % self.N]\n                den = 2 * b - a - c\n                delta =\
+      \ float(np.real((a - c) / den)) if abs(den) > 0 else 0.0\n                delta\
+      \ = float(np.clip(delta, -0.5, 0.5))   # residual offset [bins]\n          \
+      \      self.trk_r += self.trk_g2 * delta\n                self.trk_f += self.trk_g1\
+      \ * delta\n            self.trk_hist.append(self.trk_f)\n            self.trk_f\
+      \ += self.trk_r\n        out[nout:nout + self.N] = x.astype(np.complex64)\n\
+      \        if self.n_out == 0:\n            meta = pmt.make_dict()\n         \
+      \   for k, v in self.info.items():\n                meta = pmt.dict_add(meta,\
+      \ pmt.intern(k), pmt.to_pmt(v))\n            self.add_item_tag(0, self.nitems_written(0)\
+      \ + nout,\n                              pmt.intern('frame_start'), meta)\n\
+      \        self.n_out += 1\n        self.pos += self.L_eff\n        return nout\
+      \ + self.N, True\n\n    # ------------------------------------------------------------\
+      \ scheduler\n    def forecast(self, noutput_items, ninputs):\n        return\
+      \ [1] * ninputs\n\n    def general_work(self, input_items, output_items):\n\
+      \        inp = input_items[0]\n        n_in = len(inp)\n        if n_in:\n \
+      \           self.buf = np.concatenate((self.buf, inp))\n            self.consume(0,\
+      \ n_in)\n        out = output_items[0]\n        nout = 0\n        while True:\n\
+      \            if self.state == 'DETECT':\n                prog = self.step_detect()\n\
+      \            elif self.state == 'SFD':\n                prog = self.step_sfd()\n\
+      \            else:\n                nout, prog = self.step_output(out, nout)\n\
+      \            if not prog:\n                break\n        # keep 2 symbols of\
+      \ history behind the read pointer (alignment looks back)\n        keep_from\
+      \ = int(self.pos) - 2 * self.L - self.os\n        if keep_from > self.buf_start:\n\
+      \            cut = keep_from - self.buf_start\n            self.buf = self.buf[cut:]\n\
+      \            self.buf_start = keep_from\n        return nout\n"
+    affinity: ''
+    alias: ''
+    bw: bw
+    center_freq: center_freq
+    comment: 'EPB #1: preamble detect, CFO + timing, SFD, clock drift,
+
+      cuts out aligned 1-sample/chip symbol windows'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    preamble_len: preamble_len
+    samp_rate: rx_rate
+    sf: sf
+    sro_comp: 'True'
+    sync_word: sync_word
+    track: 'True'
+    verbose: 'True'
+  states:
+    _io_cache: '(''LoRa Frame Sync'', ''blk'', [(''sf'', ''12''), (''bw'', ''125000.0''),
+      (''samp_rate'', ''500000.0''), (''sync_word'', ''18''), (''preamble_len'', ''8''),
+      (''center_freq'', ''432150000.0''), (''sro_comp'', ''True''), (''track'', ''True''),
+      (''verbose'', ''True'')], [(''0'', ''complex'', 1), (''frame_info'', ''message'',
+      1)], [(''0'', ''complex'', 1)], ''LoRa Frame Sync: preamble detect, CFO/STO
+      estimation, SFD, symbol windows'', [''bw'', ''preamble_len'', ''sf'', ''sro_comp'',
+      ''track'', ''verbose''])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 940]
+    rotation: 0
+    state: enabled
+- name: mag2
+  id: blocks_complex_to_mag_squared
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 960]
+    rotation: 0
+    state: enabled
+- name: mag_sync
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1104, 1060]
+    rotation: 0
+    state: enabled
+- name: mon_argmax
+  id: blocks_argmax_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '1'
+    type: float
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1328, 710]
+    rotation: 0
+    state: enabled
+- name: mon_fft
+  id: fft_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_size: N
+    forward: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nthreads: '1'
+    shift: 'False'
+    type: complex
+    window: window.rectangular(N)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 710]
+    rotation: 0
+    state: enabled
+- name: mon_keep
+  id: blocks_keep_one_in_n
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 'MONITOR: 1 sample/chip, no alignment'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    n: rx_os
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 700]
+    rotation: 0
+    state: enabled
+- name: mon_mag
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: N
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1176, 730]
+    rotation: 0
+    state: enabled
+- name: mon_mult
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: DE-CHIRP (free-running)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 720]
+    rotation: 0
+    state: enabled
+- name: mon_null
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: short
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1512, 770]
+    rotation: 0
+    state: enabled
+- name: mon_ref
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Endless down-chirps on an arbitrary time grid
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: complex
+    vector: downchirp
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 790]
+    rotation: 0
+    state: enabled
+- name: mon_s2f
+  id: blocks_short_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: '1'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1512, 710]
+    rotation: 0
+    state: enabled
+- name: mon_s2v
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: N
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 730]
+    rotation: 0
+    state: enabled
+- name: mon_time
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: 'Preamble = flat run at an ARBITRARY bin (timing + CFO);
+
+      sync word = +8, +16 steps; payload = random bins; noise = random.'
+    ctrlpanel: 'False'
+    entags: 'False'
+    grid: 'True'
+    gui_hint: 2,0,1,1
+    label1: '''peak bin'''
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '0'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"FREE-RUNNING de-chirp: argmax bin per 32.8 ms window"'
+    nconnections: '1'
+    size: '160'
+    srate: 1.0/t_sym
+    stemplot: 'False'
+    style1: '0'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: '"FFT bin"'
+    ymax: N*1.05
+    ymin: '-100'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1680, 710]
+    rotation: 0
+    state: enabled
+- name: rtlsdr_source
+  id: soapy_rtlsdr_source
+  parameters:
+    affinity: ''
+    agc: 'False'
+    alias: ''
+    bias: 'False'
+    bufflen: '16384'
+    center_freq: center_freq - if_offset
+    comment: 'LIVE: RTL-SDR via in-tree gr-soapy (radioconda ships SoapyRTLSDR).
+
+      Tuned if_offset below 432.150 MHz.'
+    dev_args: '""'
+    freq_correction: rtl_ppm
+    gain: rtl_gain
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 300]
+    rotation: 0
+    state: enabled
+- name: sync_s2v
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Each N-sample block -> one vector
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: N
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [520, 1060]
+    rotation: 0
+    state: enabled
+- name: throttle
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Paces file playback (no hardware clock)
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 540]
+    rotation: 0
+    state: disabled
+- name: vec_sync
+  id: qtgui_vector_sink_f
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    average: '1.0'
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    grid: 'True'
+    gui_hint: 2,1,1,1
+    label1: '''symbol'''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"SYNCHRONISED de-chirped spectrum of the latest symbol"'
+    nconnections: '1'
+    ref_level: '0'
+    showports: 'False'
+    update_time: '0.10'
+    vlen: N
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    x_axis_label: '"FFT bin = symbol value"'
+    x_start: '0'
+    x_step: '1'
+    x_units: '""'
+    y_axis_label: '"|FFT|"'
+    y_units: '""'
+    ymax: '1'
+    ymin: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1272, 1080]
+    rotation: 0
+    state: enabled
+- name: waterfall
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: center_freq - if_offset
+    fftsize: '2048'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: 1,0,1,2
+    int_max: '-40'
+    int_min: '-110'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"RTL-SDR input: LoRa APRS burst at +" + str(int(if_offset/1e3)) + " kHz
+      (" + str(center_freq/1e6) + " MHz)"'
+    nconnections: '1'
+    showports: 'False'
+    type: complex
+    update_time: '0.05'
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 500]
+    rotation: 0
+    state: enabled
+- name: xlating
+  id: freq_xlating_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    center_freq: if_offset
+    comment: Shift +if_offset -> 0 Hz, low-pass, 1 MS/s -> 500 kS/s (4 samples/chip)
+    decim: os_factor//rx_os
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate
+    taps: rx_taps
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 340]
+    rotation: 0
+    state: enabled
+
+connections:
+- [argmax, '0', lora_dec, '0']
+- [argmax, '1', argmax_null, '0']
+- [dechirp, '0', fft_sync, '0']
+- [fft_sync, '0', mag2, '0']
+- [fft_sync, '0', mag_sync, '0']
+- [file_source, '0', throttle, '0']
+- [lora_dec, frame_info, lora_sync, frame_info]
+- [lora_dec, payload, aprs, pdu]
+- [lora_sync, '0', sync_s2v, '0']
+- [mag2, '0', argmax, '0']
+- [mag_sync, '0', vec_sync, '0']
+- [mon_argmax, '0', mon_s2f, '0']
+- [mon_argmax, '1', mon_null, '0']
+- [mon_fft, '0', mon_mag, '0']
+- [mon_keep, '0', mon_mult, '0']
+- [mon_mag, '0', mon_argmax, '0']
+- [mon_mult, '0', mon_s2v, '0']
+- [mon_ref, '0', mon_mult, '1']
+- [mon_s2f, '0', mon_time, '0']
+- [mon_s2v, '0', mon_fft, '0']
+- [rtlsdr_source, '0', waterfall, '0']
+- [rtlsdr_source, '0', xlating, '0']
+- [sync_s2v, '0', dechirp, '0']
+- [throttle, '0', waterfall, '0']
+- [throttle, '0', xlating, '0']
+- [xlating, '0', lora_sync, '0']
+- [xlating, '0', mon_keep, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.10.0

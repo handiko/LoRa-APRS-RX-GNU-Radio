@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="Tracking off versus on, on the real frame">
+<title>Tracking off versus on, on the real frame</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">With tracking on, every symbol stays near the centre of its bin</text>
+<rect x="90.0" y="60.0" width="820.0" height="300.0" rx="0" fill="#ffffff" stroke="#cfcfca" stroke-width="1"/>
+<rect x="90.0" y="216.2" width="820.0" height="125.0" fill="#E3F4E8" fill-opacity="0.6"/>
+<path d="M90.0 341.2 L910.0 341.2" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="341.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">-0.5</text>
+<text x="916.0" y="341.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">-15 Hz</text>
+<path d="M90.0 278.8 L910.0 278.8" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="278.8" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">+0.0</text>
+<text x="916.0" y="278.8" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+0 Hz</text>
+<path d="M90.0 216.2 L910.0 216.2" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="216.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">+0.5</text>
+<text x="916.0" y="216.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+15 Hz</text>
+<path d="M90.0 153.8 L910.0 153.8" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="153.8" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">+1.0</text>
+<text x="916.0" y="153.8" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+31 Hz</text>
+<path d="M90.0 91.2 L910.0 91.2" fill="none" stroke="#ececE8" stroke-width="1"/>
+<text x="84.0" y="91.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="end" dominant-baseline="central">+1.5</text>
+<text x="916.0" y="91.2" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">+46 Hz</text>
+<path d="M98.7 360.0 L98.7 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="98.7" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">0</text>
+<path d="M229.6 360.0 L229.6 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="229.6" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">15</text>
+<path d="M360.4 360.0 L360.4 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="360.4" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">30</text>
+<path d="M491.3 360.0 L491.3 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="491.3" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">45</text>
+<path d="M622.1 360.0 L622.1 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="622.1" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">60</text>
+<path d="M753.0 360.0 L753.0 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="753.0" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">75</text>
+<path d="M883.8 360.0 L883.8 364.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="883.8" y="374.0" font-size="10" fill="#6b6b66" font-weight="400" text-anchor="middle" dominant-baseline="central">90</text>
+<text x="500.0" y="392.0" font-size="11" fill="#6b6b66" font-weight="600" text-anchor="middle" dominant-baseline="central">symbol number in the frame</text>
+<text x="38.0" y="210.0" font-size="11" fill="#6b6b66" font-weight="600" text-anchor="middle" dominant-baseline="central">bins</text>
+<polyline points="98.7,278.8 107.4,282.9 116.2,285.1 124.9,288.3 133.6,291.3 142.3,292.9 151.1,291.9 159.8,291.2 168.5,291.4 177.2,294.8 186.0,292.9 194.7,294.5 203.4,295.7 212.1,297.7 220.9,297.2 229.6,294.6 238.3,296.2 247.0,294.0 255.7,295.6 264.5,292.7 273.2,289.0 281.9,286.6 290.6,285.6 299.4,288.7 308.1,288.9 316.8,283.9 325.5,284.2 334.3,286.0 343.0,278.5 351.7,279.2 360.4,272.2 369.1,271.1 377.9,271.8 386.6,274.1 395.3,268.1 404.0,262.6 412.8,264.2 421.5,257.8 430.2,260.1 438.9,260.0 447.7,253.5 456.4,252.4 465.1,252.3 473.8,251.8 482.6,247.2 491.3,245.6 500.0,241.9 508.7,238.3 517.4,232.1 526.2,226.7 534.9,222.7 543.6,222.3 552.3,219.1 561.1,218.4 569.8,214.4 578.5,213.3 587.2,211.1 596.0,209.0 604.7,204.0 613.4,200.6 622.1,197.3 630.9,195.2 639.6,192.8 648.3,188.0 657.0,185.5 665.7,182.7 674.5,179.1 683.2,176.1 691.9,172.4 700.6,169.1 709.4,165.8 718.1,162.5 726.8,159.0 735.5,155.7 744.3,152.3 753.0,148.9 761.7,145.4 770.4,142.7 779.1,139.4 787.9,136.3 796.6,133.1 805.3,130.6 814.0,126.7 822.8,123.8 831.5,121.0 840.2,116.5 848.9,114.6 857.7,109.3 866.4,106.2 875.1,104.3 883.8,101.9 892.6,97.2 901.3,95.7" fill="none" stroke="#0F6E56" stroke-width="2.6" stroke-linejoin="round" stroke-opacity="1"/>
+<text x="709.4" y="78.8" font-size="11" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">correction the tracker applied: +45 Hz by the end</text>
+<circle cx="98.7" cy="291.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="107.4" cy="296.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="116.2" cy="292.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="124.9" cy="298.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="133.6" cy="300.3" r="3" fill="#B45309" stroke="none"/>
+<circle cx="142.3" cy="298.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="151.1" cy="291.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="159.8" cy="291.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="168.5" cy="293.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="177.2" cy="304.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="186.0" cy="290.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="194.7" cy="300.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="203.4" cy="300.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="212.1" cy="304.3" r="3" fill="#B45309" stroke="none"/>
+<circle cx="220.9" cy="298.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="229.6" cy="290.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="238.3" cy="302.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="247.0" cy="291.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="255.7" cy="302.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="264.5" cy="288.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="273.2" cy="283.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="281.9" cy="285.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="290.6" cy="287.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="299.4" cy="300.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="308.1" cy="293.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="316.8" cy="276.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="325.5" cy="289.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="334.3" cy="294.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="343.0" cy="265.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="351.7" cy="286.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="360.4" cy="260.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="369.1" cy="274.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="377.9" cy="279.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="386.6" cy="284.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="395.3" cy="259.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="404.0" cy="256.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="412.8" cy="274.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="421.5" cy="249.3" r="3" fill="#B45309" stroke="none"/>
+<circle cx="430.2" cy="272.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="438.9" cy="266.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="447.7" cy="244.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="456.4" cy="256.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="465.1" cy="259.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="473.8" cy="258.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="482.6" cy="243.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="491.3" cy="249.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="500.0" cy="241.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="508.7" cy="238.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="517.4" cy="225.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="526.2" cy="223.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="534.9" cy="221.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="543.6" cy="230.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="552.3" cy="221.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="561.1" cy="226.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="569.8" cy="338.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="578.5" cy="222.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="587.2" cy="339.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="596.0" cy="339.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="604.7" cy="326.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="613.4" cy="327.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="622.1" cy="323.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="630.9" cy="326.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="639.6" cy="322.3" r="3" fill="#B45309" stroke="none"/>
+<circle cx="648.3" cy="311.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="657.0" cy="314.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="665.7" cy="311.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="674.5" cy="306.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="683.2" cy="304.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="691.9" cy="298.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="700.6" cy="296.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="709.4" cy="293.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="718.1" cy="290.3" r="3" fill="#B45309" stroke="none"/>
+<circle cx="726.8" cy="286.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="735.5" cy="283.7" r="3" fill="#B45309" stroke="none"/>
+<circle cx="744.3" cy="279.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="753.0" cy="277.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="761.7" cy="273.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="770.4" cy="272.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="779.1" cy="267.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="787.9" cy="264.9" r="3" fill="#B45309" stroke="none"/>
+<circle cx="796.6" cy="261.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="805.3" cy="260.5" r="3" fill="#B45309" stroke="none"/>
+<circle cx="814.0" cy="254.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="822.8" cy="252.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="831.5" cy="250.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="840.2" cy="242.1" r="3" fill="#B45309" stroke="none"/>
+<circle cx="848.9" cy="246.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="857.7" cy="232.0" r="3" fill="#B45309" stroke="none"/>
+<circle cx="866.4" cy="236.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="875.1" cy="236.4" r="3" fill="#B45309" stroke="none"/>
+<circle cx="883.8" cy="233.8" r="3" fill="#B45309" stroke="none"/>
+<circle cx="892.6" cy="221.2" r="3" fill="#B45309" stroke="none"/>
+<circle cx="901.3" cy="228.6" r="3" fill="#B45309" stroke="none"/>
+<circle cx="98.7" cy="291.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="107.4" cy="291.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="116.2" cy="284.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="124.9" cy="287.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="133.6" cy="286.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="142.3" cy="281.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="151.1" cy="272.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="159.8" cy="273.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="168.5" cy="277.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="177.2" cy="287.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="186.0" cy="269.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="194.7" cy="281.6" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="203.4" cy="280.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="212.1" cy="282.8" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="220.9" cy="274.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="229.6" cy="267.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="238.3" cy="282.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="247.0" cy="269.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="255.7" cy="282.6" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="264.5" cy="267.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="273.2" cy="265.4" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="281.9" cy="270.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="290.6" cy="275.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="299.4" cy="289.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="308.1" cy="279.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="316.8" cy="261.8" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="325.5" cy="280.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="334.3" cy="285.6" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="343.0" cy="254.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="351.7" cy="283.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="360.4" cy="257.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="369.1" cy="278.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="377.9" cy="284.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="386.6" cy="288.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="395.3" cy="260.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="404.0" cy="263.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="412.8" cy="288.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="421.5" cy="261.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="430.2" cy="291.4" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="438.9" cy="282.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="447.7" cy="261.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="456.4" cy="280.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="465.1" cy="283.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="473.8" cy="281.6" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="482.6" cy="268.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="491.3" cy="278.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="500.0" cy="271.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="508.7" cy="272.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="517.4" cy="264.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="526.2" cy="267.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="534.9" cy="273.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="543.6" cy="285.4" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="552.3" cy="276.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="561.1" cy="284.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="569.8" cy="272.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="578.5" cy="283.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="587.2" cy="279.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="596.0" cy="279.4" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="604.7" cy="269.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="613.4" cy="275.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="622.1" cy="276.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="630.9" cy="280.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="639.6" cy="279.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="648.3" cy="271.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="657.0" cy="279.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="665.7" cy="278.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="674.5" cy="275.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="683.2" cy="277.8" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="691.9" cy="275.8" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="700.6" cy="277.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="709.4" cy="277.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="718.1" cy="277.3" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="726.8" cy="276.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="735.5" cy="277.6" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="744.3" cy="277.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="753.0" cy="277.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="761.7" cy="277.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="770.4" cy="279.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="779.1" cy="277.9" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="787.9" cy="278.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="796.6" cy="278.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="805.3" cy="280.4" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="814.0" cy="276.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="822.8" cy="279.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="831.5" cy="279.8" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="840.2" cy="273.7" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="848.9" cy="283.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="857.7" cy="271.5" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="866.4" cy="279.0" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="875.1" cy="283.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="883.8" cy="281.2" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="892.6" cy="273.1" r="3" fill="#1d4ed8" stroke="none"/>
+<circle cx="901.3" cy="284.3" r="3" fill="#1d4ed8" stroke="none"/>
+<text x="901.3" y="353.8" font-size="10.5" fill="#B45309" font-weight="700" text-anchor="end" dominant-baseline="central">without tracking: the peak slides to the bin edge, then reads in the NEXT bin</text>
+<circle cx="96.0" cy="410.0" r="4" fill="#B45309" stroke="none"/>
+<text x="106.0" y="410.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">offset from bin centre, WITHOUT tracking</text>
+<circle cx="380.4" cy="410.0" r="4" fill="#1d4ed8" stroke="none"/>
+<text x="390.4" y="410.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">WITH tracking (max 0.20 bin)</text>
+<path d="M584.9 410.0 L606.9 410.0" fill="none" stroke="#0F6E56" stroke-width="2.4"/>
+<text x="612.9" y="410.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">tracker's correction</text>
+<text x="90.0" y="440.0" font-size="10.5" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">Same recording, same symbols. Without tracking, 38 of the last symbols were read one bin high — harmless only because the drift was upward.</text>
+</svg>

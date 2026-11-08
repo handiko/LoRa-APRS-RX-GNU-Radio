@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 470" width="1100" height="470" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="The frequency-tracking loop inside the Frame Sync">
+<title>The frequency-tracking loop inside the Frame Sync</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">The fix: a small loop that re-centres every symbol before it leaves the Frame Sync</text>
+<rect x="30.0" y="70.0" width="190.0" height="80.0" rx="8" fill="#ffffff" stroke="#3d3d3a" stroke-width="1.3"/>
+<text x="125.0" y="95.2" font-size="13" fill="#2b2b29" font-weight="700" text-anchor="middle" dominant-baseline="central">next slice</text>
+<text x="125.0" y="111.4" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">cut from the stream at the</text>
+<text x="125.0" y="126.2" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">time Frame Sync expects</text>
+<rect x="270.0" y="60.0" width="210.0" height="100.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.3"/>
+<text x="375.0" y="87.7" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">apply prediction</text>
+<text x="375.0" y="103.9" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">nudge the frequency by</text>
+<text x="375.0" y="118.8" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">the loop's current</text>
+<text x="375.0" y="133.6" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">estimate ("freq")</text>
+<rect x="530.0" y="60.0" width="200.0" height="100.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.3"/>
+<text x="630.0" y="87.7" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">un-sweep + FFT</text>
+<text x="630.0" y="103.9" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">done internally, only</text>
+<text x="630.0" y="118.8" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">to measure, not to</text>
+<text x="630.0" y="133.6" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">decide the symbol</text>
+<rect x="780.0" y="60.0" width="280.0" height="100.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.3"/>
+<text x="920.0" y="87.7" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">where is the peak?</text>
+<text x="920.0" y="103.9" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">strongest bin, plus its two</text>
+<text x="920.0" y="118.8" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">neighbours → offset δ from the</text>
+<text x="920.0" y="133.6" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">bin centre (accurate to 0.001 bin)</text>
+<path d="M220.0 110.0 L268.0 110.0" fill="none" stroke="#3d3d3a" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M480.0 110.0 L528.0 110.0" fill="none" stroke="#A32D2D" stroke-width="1.4" marker-end="url(#ahc)"/>
+<path d="M730.0 110.0 L778.0 110.0" fill="none" stroke="#A32D2D" stroke-width="1.4" marker-end="url(#ahc)"/>
+<rect x="780.0" y="220.0" width="280.0" height="80.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.3"/>
+<text x="920.0" y="245.2" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">is this peak trustworthy?</text>
+<text x="920.0" y="261.4" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">only learn from symbols whose peak</text>
+<text x="920.0" y="276.2" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">stands &gt; 2·ln N above the average</text>
+<path d="M920.0 160.0 L920.0 218.0" fill="none" stroke="#A32D2D" stroke-width="1.4" marker-end="url(#ahc)"/>
+<rect x="430.0" y="210.0" width="300.0" height="100.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.3"/>
+<text x="580.0" y="235.7" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">update the estimate</text>
+<text x="580.0" y="252.6" font-size="12" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">freq ← freq + 0.3 × δ</text>
+<text x="580.0" y="268.8" font-size="12" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">rate ← rate + 0.02 × δ</text>
+<text x="580.0" y="285.0" font-size="12" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">then, for the next symbol: freq ← freq + rate</text>
+<path d="M780.0 260.0 L732.0 260.0" fill="none" stroke="#A32D2D" stroke-width="1.4" marker-end="url(#ahc)"/>
+<text x="756.0" y="248.0" font-size="11" fill="#A32D2D" font-weight="600" text-anchor="middle" dominant-baseline="central">yes</text>
+<path d="M920.0 300.0 L920.0 345.0 L580.0 345.0 L580.0 312.0" fill="none" stroke="#6b6b66" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<text x="750.0" y="357.0" font-size="11" fill="#6b6b66" font-weight="600" text-anchor="middle" dominant-baseline="central">no (noise or weak symbol): skip δ, just keep coasting at the learned rate</text>
+<path d="M430.0 260.0 L375.0 260.0 L375.0 162.0" fill="none" stroke="#A32D2D" stroke-width="1.8" marker-end="url(#ahc)"/>
+<text x="383.0" y="200.0" font-size="11" fill="#A32D2D" font-weight="600" text-anchor="start" dominant-baseline="central">used on the NEXT symbol</text>
+<path d="M375.0 160.0 L375.0 175.0" fill="none" stroke="#A32D2D" stroke-width="1"/>
+<rect x="30.0" y="380.0" width="330.0" height="70.0" rx="8" fill="#E3F2EC" stroke="#0F6E56" stroke-width="1.3"/>
+<text x="195.0" y="400.1" font-size="13" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">to the stock blocks (unchanged)</text>
+<text x="195.0" y="416.3" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">Stream to Vector → × down-chirp → FFT → Argmax:</text>
+<text x="195.0" y="431.2" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">this is what actually decides each symbol</text>
+<path d="M330.0 160.0 L330.0 230.0 L195.0 230.0 L195.0 378.0" fill="none" stroke="#0F6E56" stroke-width="1.8" marker-end="url(#aht)"/>
+<text x="205.0" y="300.0" font-size="11" fill="#0F6E56" font-weight="600" text-anchor="start" dominant-baseline="central">the corrected slice</text>
+<text x="430.0" y="400.0" font-size="11" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">Why two terms? The frequency term catches up with a change; the drift-rate term learns how fast</text>
+<text x="430.0" y="417.0" font-size="11" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">the frequency is moving and keeps up with a steady warm-up ramp without lagging behind it.</text>
+<text x="430.0" y="434.0" font-size="11" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">Each symbol is corrected with what the PREVIOUS symbols taught the loop, never with itself.</text>
+</svg>

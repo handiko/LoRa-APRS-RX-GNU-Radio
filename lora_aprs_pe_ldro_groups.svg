@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" width="1000" height="330" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="Low-data-rate mode: groups of four bins and the one-sided tolerance">
+<title>Low-data-rate mode: groups of four bins and the one-sided tolerance</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">Low-data-rate mode: each symbol is sent on the LOWEST bin of a group of four</text>
+<rect x="60.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="85.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g-3</text>
+<rect x="114.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="139.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g-2</text>
+<rect x="168.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="193.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g-1</text>
+<rect x="222.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="247.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g</text>
+<rect x="276.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#E6ECFB" stroke="#3d3d3a" stroke-width="1"/>
+<text x="301.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+1</text>
+<rect x="330.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#E6ECFB" stroke="#3d3d3a" stroke-width="1"/>
+<text x="355.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+2</text>
+<rect x="384.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#E6ECFB" stroke="#3d3d3a" stroke-width="1"/>
+<text x="409.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+3</text>
+<rect x="438.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#E6ECFB" stroke="#3d3d3a" stroke-width="1"/>
+<text x="463.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+4</text>
+<rect x="492.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="517.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+5</text>
+<rect x="546.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="571.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+6</text>
+<rect x="600.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="625.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+7</text>
+<rect x="654.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="679.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+8</text>
+<rect x="708.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="733.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+9</text>
+<rect x="762.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="787.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+10</text>
+<rect x="816.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="841.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+11</text>
+<rect x="870.0" y="120.0" width="50.0" height="46.0" rx="4" fill="#F1F1EE" stroke="#c9c9c4" stroke-width="1"/>
+<text x="895.0" y="143.0" font-size="11" fill="#2b2b29" font-weight="600" text-anchor="middle" dominant-baseline="central">4g+12</text>
+<path d="M60.0 106.0 L272.0 106.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="166.0" y="94.0" font-size="12" fill="#6b6b66" font-weight="700" text-anchor="middle" dominant-baseline="central">group g-1</text>
+<path d="M276.0 106.0 L488.0 106.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="382.0" y="94.0" font-size="12" fill="#1d4ed8" font-weight="700" text-anchor="middle" dominant-baseline="central">group g</text>
+<path d="M492.0 106.0 L704.0 106.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="598.0" y="94.0" font-size="12" fill="#6b6b66" font-weight="700" text-anchor="middle" dominant-baseline="central">group g+1</text>
+<path d="M708.0 106.0 L920.0 106.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="814.0" y="94.0" font-size="12" fill="#6b6b66" font-weight="700" text-anchor="middle" dominant-baseline="central">group g+2</text>
+<path d="M301.0 220.0 L301.0 170.0" fill="none" stroke="#1d4ed8" stroke-width="2" marker-end="url(#ahb)"/>
+<text x="301.0" y="232.0" font-size="12" fill="#1d4ed8" font-weight="700" text-anchor="middle" dominant-baseline="central">sent here</text>
+<circle cx="355.0" cy="190.0" r="12" fill="#15803d" stroke="none"/>
+<text x="355.0" y="190.0" font-size="11" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central">+1</text>
+<circle cx="409.0" cy="190.0" r="12" fill="#15803d" stroke="none"/>
+<text x="409.0" y="190.0" font-size="11" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central">+2</text>
+<circle cx="463.0" cy="190.0" r="12" fill="#15803d" stroke="none"/>
+<text x="463.0" y="190.0" font-size="11" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central">+3</text>
+<circle cx="247.0" cy="190.0" r="12" fill="#B91C1C" stroke="none"/>
+<text x="247.0" y="190.0" font-size="11" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central">−1</text>
+<circle cx="517.0" cy="190.0" r="12" fill="#B91C1C" stroke="none"/>
+<text x="517.0" y="190.0" font-size="11" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central">+4</text>
+<text x="384.0" y="260.0" font-size="12" fill="#15803d" font-weight="700" text-anchor="middle" dominant-baseline="central">readings 1, 2 or 3 bins HIGH stay in group g → the right bits</text>
+<text x="276.0" y="280.0" font-size="12" fill="#B91C1C" font-weight="700" text-anchor="middle" dominant-baseline="central">a reading only 1 bin LOW falls into group g−1 → wrong bits</text>
+<text x="30.0" y="300.0" font-size="11" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">Measured on YB1SDL-9: all 93 symbols (header and payload) sat exactly on the lowest bin of their group.</text>
+<text x="30.0" y="316.0" font-size="11" fill="#6b6b66" font-weight="400" text-anchor="start" dominant-baseline="central">A receiver whose frequency slides upward survives ~3 bins (~110 Hz) of drift; sliding downward, it fails after half a bin (~15 Hz).</text>
+</svg>

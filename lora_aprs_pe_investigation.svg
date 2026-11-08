@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" width="1000" height="760" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="How the tracking problem was found and fixed">
+<title>How the tracking problem was found and fixed</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">How the problem was tracked down, step by step</text>
+<rect x="30.0" y="50.0" width="940.0" height="54.0" rx="8" fill="#ffffff" stroke="#3d3d3a" stroke-width="1.4"/>
+<text x="46.0" y="67.0" font-size="13" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">1 · Symptom on air</text>
+<text x="46.0" y="87.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">1 frame of 10 decoded. All 10: sync word perfect, header OK, payload CRC FAIL, SNR 14–25 dB.</text>
+<path d="M500.0 104.0 L500.0 118.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="120.0" width="940.0" height="54.0" rx="8" fill="#ffffff" stroke="#3d3d3a" stroke-width="1.4"/>
+<text x="46.0" y="137.0" font-size="13" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">2 · Three suspects</text>
+<text x="46.0" y="157.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">tracker frequency drift during the frame · dropped samples on the live PC · dongle oscillator drift</text>
+<path d="M500.0 174.0 L500.0 188.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="190.0" width="940.0" height="54.0" rx="8" fill="#E6ECFB" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="46.0" y="207.0" font-size="13" fill="#1d4ed8" font-weight="700" text-anchor="start" dominant-baseline="central">3 · Recording (Gqrx, 300 kS/s)</text>
+<text x="46.0" y="227.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">one frame that other stations decoded. Played back through the receiver: CRC OK.</text>
+<path d="M500.0 244.0 L500.0 258.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="260.0" width="940.0" height="54.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.4"/>
+<text x="46.0" y="277.0" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="start" dominant-baseline="central">4 · Measure symbol by symbol</text>
+<text x="46.0" y="297.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">peak position flat for 0.8 s of payload, then +45 Hz (≈1.5 bins) by the end: a warm-up drift.</text>
+<path d="M500.0 314.0 L500.0 328.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="330.0" width="940.0" height="54.0" rx="8" fill="#F1F1EE" stroke="#6b6b66" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="46.0" y="347.0" font-size="13" fill="#6b6b66" font-weight="700" text-anchor="start" dominant-baseline="central">5 · Dead end: shifted copies</text>
+<text x="46.0" y="367.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">shifting the frame in software also broke the clock relation; misleading pass/fail pattern. Discarded.</text>
+<path d="M500.0 384.0 L500.0 398.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="400.0" width="940.0" height="54.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.4"/>
+<text x="46.0" y="417.0" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="start" dominant-baseline="central">6 · Physically consistent copies</text>
+<text x="46.0" y="437.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">frequency AND clock shifted together: decodes at every CFO even without tracking. So why fail live?</text>
+<path d="M500.0 454.0 L500.0 468.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="470.0" width="940.0" height="54.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.4"/>
+<text x="46.0" y="487.0" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="start" dominant-baseline="central">7 · The key observation</text>
+<text x="46.0" y="507.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">every symbol sits on the lowest bin of a group of 4 → reading HIGH is forgiven, LOW is not.</text>
+<path d="M500.0 524.0 L500.0 538.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="540.0" width="940.0" height="54.0" rx="8" fill="#F8E6E4" stroke="#A32D2D" stroke-width="1.4"/>
+<text x="46.0" y="557.0" font-size="13" fill="#A32D2D" font-weight="700" text-anchor="start" dominant-baseline="central">8 · Test the prediction</text>
+<text x="46.0" y="577.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">15 Hz of DOWNWARD drift on the real frame: every copy fails without tracking. Confirmed.</text>
+<path d="M500.0 594.0 L500.0 608.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="610.0" width="940.0" height="54.0" rx="8" fill="#E3F2EC" stroke="#0F6E56" stroke-width="1.4"/>
+<text x="46.0" y="627.0" font-size="13" fill="#0F6E56" font-weight="700" text-anchor="start" dominant-baseline="central">9 · Fix: frequency tracking</text>
+<text x="46.0" y="647.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">Frame Sync re-centres every symbol (2nd-order loop). Real frame: −300 … +345 Hz all decode.</text>
+<path d="M500.0 664.0 L500.0 678.0" fill="none" stroke="#6b6b66" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="30.0" y="680.0" width="940.0" height="54.0" rx="8" fill="#FDF0DC" stroke="#B45309" stroke-width="1.4"/>
+<text x="46.0" y="697.0" font-size="13" fill="#B45309" font-weight="700" text-anchor="start" dominant-baseline="central">10 · Back on air</text>
+<text x="46.0" y="717.0" font-size="11.5" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central">With frequency tracking in the Frame Sync, my tracker decodes live.</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="1000" height="480" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" role="img" aria-label="How the APRS parser reads one packet">
+<title>How the APRS parser reads one packet</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3d3d3a"/></marker><marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A32D2D"/></marker><marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F6E56"/></marker><marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30.0" y="22.0" font-size="15" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">From the 85 decoded bytes to a position on the map (EPB 3)</text>
+<rect x="30.0" y="70.0" width="94.4" height="30.0" rx="3" fill="#A32D2D" stroke="#ffffff" stroke-width="1"/>
+<text x="77.2" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">&lt;\xFF\x01</text>
+<path d="M77.2 100.0 L77.2 112.0" fill="none" stroke="#A32D2D" stroke-width="1"/>
+<text x="77.2" y="120.0" font-size="10.5" fill="#A32D2D" font-weight="700" text-anchor="middle" dominant-baseline="central">LoRa-APRS marker,</text>
+<text x="77.2" y="133.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">removed</text>
+<rect x="127.4" y="70.0" width="84.8" height="30.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1"/>
+<text x="169.8" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">YB1SDL-9</text>
+<path d="M169.8 100.0 L169.8 146.0" fill="none" stroke="#1d4ed8" stroke-width="1"/>
+<text x="169.8" y="154.0" font-size="10.5" fill="#1d4ed8" font-weight="700" text-anchor="middle" dominant-baseline="central">from</text>
+<text x="169.8" y="167.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">(callsign-SSID)</text>
+<rect x="215.2" y="70.0" width="56.0" height="30.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1"/>
+<text x="243.2" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">&gt;APRS</text>
+<path d="M243.2 100.0 L243.2 112.0" fill="none" stroke="#1d4ed8" stroke-width="1"/>
+<text x="243.2" y="120.0" font-size="10.5" fill="#1d4ed8" font-weight="700" text-anchor="middle" dominant-baseline="central">to</text>
+<text x="243.2" y="133.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">(generic)</text>
+<rect x="274.2" y="70.0" width="84.8" height="30.0" rx="3" fill="#1d4ed8" stroke="#ffffff" stroke-width="1"/>
+<text x="316.6" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">,WIDE2-2</text>
+<path d="M316.6 100.0 L316.6 146.0" fill="none" stroke="#1d4ed8" stroke-width="1"/>
+<text x="316.6" y="154.0" font-size="10.5" fill="#1d4ed8" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="316.6" y="167.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">(digipeat ×2)</text>
+<rect x="362.0" y="70.0" width="17.6" height="30.0" rx="3" fill="#6b6b66" stroke="#ffffff" stroke-width="1"/>
+<text x="370.8" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">:</text>
+<path d="M370.8 100.0 L370.8 180.0" fill="none" stroke="#6b6b66" stroke-width="1"/>
+<text x="370.8" y="188.0" font-size="10.5" fill="#6b6b66" font-weight="700" text-anchor="middle" dominant-baseline="central">start of</text>
+<text x="370.8" y="201.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">info field</text>
+<rect x="382.6" y="70.0" width="17.6" height="30.0" rx="3" fill="#0F6E56" stroke="#ffffff" stroke-width="1"/>
+<text x="391.4" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">!</text>
+<path d="M391.4 100.0 L391.4 112.0" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<text x="391.4" y="120.0" font-size="10.5" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">position,</text>
+<text x="391.4" y="133.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">no timestamp</text>
+<rect x="403.2" y="70.0" width="84.8" height="30.0" rx="3" fill="#0F6E56" stroke="#ffffff" stroke-width="1"/>
+<text x="445.6" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">0620.56S</text>
+<path d="M445.6 100.0 L445.6 146.0" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<text x="445.6" y="154.0" font-size="10.5" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">6°20.56' S</text>
+<text x="445.6" y="167.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">= −6.34267</text>
+<rect x="491.0" y="70.0" width="17.6" height="30.0" rx="3" fill="#B45309" stroke="#ffffff" stroke-width="1"/>
+<text x="499.8" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">/</text>
+<path d="M499.8 100.0 L499.8 180.0" fill="none" stroke="#B45309" stroke-width="1"/>
+<text x="499.8" y="188.0" font-size="10.5" fill="#B45309" font-weight="700" text-anchor="middle" dominant-baseline="central">symbol</text>
+<text x="499.8" y="201.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">table</text>
+<rect x="511.6" y="70.0" width="94.4" height="30.0" rx="3" fill="#0F6E56" stroke="#ffffff" stroke-width="1"/>
+<text x="558.8" y="85.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">10640.32E</text>
+<path d="M558.8 100.0 L558.8 112.0" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<text x="558.8" y="120.0" font-size="10.5" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">106°40.32' E</text>
+<text x="558.8" y="133.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">= +106.67200</text>
+<rect x="30.0" y="220.0" width="17.6" height="30.0" rx="3" fill="#B45309" stroke="#ffffff" stroke-width="1"/>
+<text x="38.8" y="235.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">&gt;</text>
+<path d="M38.8 250.0 L38.8 262.0" fill="none" stroke="#B45309" stroke-width="1"/>
+<text x="38.8" y="270.0" font-size="10.5" fill="#B45309" font-weight="700" text-anchor="middle" dominant-baseline="central">symbol</text>
+<text x="38.8" y="283.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">= car</text>
+<rect x="50.6" y="220.0" width="75.2" height="30.0" rx="3" fill="#0F6E56" stroke="#ffffff" stroke-width="1"/>
+<text x="88.2" y="235.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">188/000</text>
+<path d="M88.2 250.0 L88.2 296.0" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<text x="88.2" y="304.0" font-size="10.5" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">course 188°</text>
+<text x="88.2" y="317.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">speed 0 kn</text>
+<rect x="128.8" y="220.0" width="238.4" height="30.0" rx="3" fill="#15803d" stroke="#ffffff" stroke-width="1"/>
+<text x="248.0" y="235.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">Testing 1..2..3..  2.0V </text>
+<path d="M248.0 250.0 L248.0 262.0" fill="none" stroke="#15803d" stroke-width="1"/>
+<text x="248.0" y="270.0" font-size="10.5" fill="#15803d" font-weight="700" text-anchor="middle" dominant-baseline="central">free-text</text>
+<text x="248.0" y="283.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">comment</text>
+<rect x="370.2" y="220.0" width="94.4" height="30.0" rx="3" fill="#0F6E56" stroke="#ffffff" stroke-width="1"/>
+<text x="417.4" y="235.0" font-size="13" fill="#ffffff" font-weight="700" text-anchor="middle" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">/A=000210</text>
+<path d="M417.4 250.0 L417.4 296.0" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<text x="417.4" y="304.0" font-size="10.5" fill="#0F6E56" font-weight="700" text-anchor="middle" dominant-baseline="central">altitude</text>
+<text x="417.4" y="317.0" font-size="10" fill="#2b2b29" font-weight="400" text-anchor="middle" dominant-baseline="central">210 ft = 64 m</text>
+<rect x="30.0" y="370.0" width="940.0" height="92.0" rx="6" fill="#fbfbf9" stroke="#d4d4cf" stroke-width="1"/>
+<text x="44.0" y="386.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">[APRS #1] YB1SDL-9&gt;APRS,WIDE2-2:!0620.56S/10640.32E&gt;188/000Testing 1..2..3..  2.0V /A=000210</text>
+<text x="44.0" y="402.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">    From YB1SDL-9  to APRS  via WIDE2-2</text>
+<text x="44.0" y="417.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">    Position: -6.34267, +106.67200   (6°20.560'S 106°40.320'E)</text>
+<text x="44.0" y="432.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">    symbol /&gt;  (car)  (uncompressed)    course 188°  speed 0 km/h  alt 64 m</text>
+<text x="44.0" y="447.0" font-size="11" fill="#2b2b29" font-weight="400" text-anchor="start" dominant-baseline="central" xml:space="preserve" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace">    Comment: Testing 1..2..3..  2.0V        Map:  https://aprs.fi/#!call=a%2FYB1SDL-9</text>
+<text x="30.0" y="356.0" font-size="12" fill="#2b2b29" font-weight="700" text-anchor="start" dominant-baseline="central">What the console prints for it</text>
+</svg>
