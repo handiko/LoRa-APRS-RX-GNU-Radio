@@ -2,7 +2,7 @@
 
 *A long, honest walkthrough of my LoRa APRS receiver: how a cheap dongle and a pile of mostly stock GNU Radio blocks can pull SF12 chirps out of the noise, turn them into bytes, and print my tracker's position. And how 45 Hz of drift nearly beat it.*
 
-![>> Code repo here <<](https://github.com/handiko/LoRa-APRS-RX-GNU-Radio)
+![Code repo here](https://github.com/handiko/LoRa-APRS-RX-GNU-Radio)
 
 ---
 
